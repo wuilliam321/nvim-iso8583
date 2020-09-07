@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/wuilliam.lacruz/.local/share/nvim/site/ftplugin'
+let g:netrw_dirhist_7='/home/wuilliam.lacruz/.local/share/nvim/site'
+let g:netrw_dirhist_6='/home/wuilliam.lacruz/.local/share/nvim/site/plugin'
+let g:netrw_dirhist_5='/home/wuilliam.lacruz/.local/share/nvim/site'
+let g:netrw_dirhist_4='/home/wuilliam.lacruz/.local/share/nvim/site/ftplugin'
+let g:netrw_dirhist_3='/home/wuilliam.lacruz/.local/share/nvim/site'
+let g:netrw_dirhist_2='/home/wuilliam.lacruz/.local/share/nvim/site/ftplugin'
+let g:netrw_dirhist_1='/home/wuilliam.lacruz/.local/share/nvim/site'
+let g:netrw_dirhist_0='/home/wuilliam.lacruz/.local/share/nvim/site/ftplugin'
+let g:netrw_dirhist_9='/home/wuilliam.lacruz/.local/share/nvim/site'
