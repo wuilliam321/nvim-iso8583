@@ -25,7 +25,7 @@ set expandtab
 set cursorline
 set clipboard=unnamedplus
 set inccommand=nosplit
-set signcolumn=number
+set signcolumn=auto:1
 set colorcolumn=80
 set spelllang=en
 
@@ -36,8 +36,6 @@ set listchars+=extends:»
 set listchars+=precedes:«
 set listchars+=trail:•
 set nojoinspaces
-
-highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 let g:netrw_browse_split = 2
 let g:netrw_banner = 0
