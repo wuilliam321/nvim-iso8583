@@ -13,6 +13,7 @@ function! s:WAutocmds()
       "autocmd CursorHold * silent call CocActionAsync('highlight')
       "autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
       autocmd FileType markdown setlocal spell
+      autocmd FileType gitcommit setlocal spell
       autocmd FileType gitcommit setlocal complete+=kspell
   augroup END
 endfunction
