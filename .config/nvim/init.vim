@@ -1,1 +1,1 @@
-.vimrc
+/home/wuilliam.lacruz/.vimrc
