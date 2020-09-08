@@ -100,16 +100,6 @@ omap ac <Plug>(coc-classobj-a)
 "vnoremap J :m '>+1<CR>gv=gv
 "vnoremap K :m '<-2<CR>gv=gv
 
-" Spell using fzf
-function! FzfSpellSink(word)
-  exe 'normal! "_ciw'.a:word
-endfunction
-function! FzfSpell()
-  let suggestions = spellsuggest(expand("<cword>"))
-  return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'window': { 'width': 0.8, 'height': 0.8 } })
-endfunction
-nnoremap z= :call FzfSpell()<CR>
-
 "=================================================================Insert mode
 
 " autcomplete improvements
