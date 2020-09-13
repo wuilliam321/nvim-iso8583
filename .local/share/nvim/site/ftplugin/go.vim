@@ -3,7 +3,7 @@ setlocal shiftwidth=4
 setlocal tabstop=4
 setlocal autowrite
 
-nnoremap <leader>p :GoFmt<CR>
+nnoremap <leader>fd :GoFmt<CR>
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'

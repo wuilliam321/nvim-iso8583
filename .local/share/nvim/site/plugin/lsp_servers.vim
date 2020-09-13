@@ -1,9 +1,8 @@
 " if has("nvim-0.5.0")
 let g:language_client_log_level = 'debug'
 
-lua require'nvim_lsp'.tsserver.setup{}
-lua require'nvim_lsp'.vuels.setup{}
-lua require'nvim_lsp'.gopls.setup{}
+lua package.loaded["mylspconfig"] = nil
+lua require("mylspconfig")
 
 function! LSPRename()
     let s:newName = input('Enter new name: ', expand('<cword>'))
@@ -13,20 +12,28 @@ endfunction
 
 function! LSPSetMappings()
     setlocal omnifunc=v:lua.vim.lsp.omnifunc
-    "setlocal omnifunc=lsp#omnifunc
-    nnoremap <silent> <buffer> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
-    nnoremap <silent> <buffer> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-    nnoremap <silent> <buffer> K     <cmd>lua vim.lsp.buf.hover()<CR>
-    nnoremap <silent> <buffer> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
-    nnoremap <silent> <buffer> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-    nnoremap <silent> <buffer> gt    <cmd>lua vim.lsp.buf.type_definition()<CR>
-    nnoremap <silent> <buffer> gr    <cmd>lua vim.lsp.buf.references()<CR>
-    nnoremap <silent> <buffer> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-    nnoremap <silent> <buffer> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-    nnoremap <silent> <buffer> [g    <cmd>NextDiagnosticCycle<CR>
-    nnoremap <silent> <buffer> ]g    <cmd>PrevDiagnosticCycle<CR>
-    nnoremap <silent> <leader> d     <cmd>OpenDiagnostic<CR>
-    nnoremap <silent> <buffer> <F2> :call LSPRename()<CR>
+
+    nnoremap <buffer>gD           <cmd>lua vim.lsp.buf.declaration()<CR>
+    nnoremap <buffer>gd           <cmd>lua vim.lsp.buf.definition()<CR>
+    nnoremap <buffer>K            <cmd>lua vim.lsp.buf.hover()<CR>
+    nnoremap <buffer>gi           <cmd>lua vim.lsp.buf.implementation()<CR>
+    nnoremap <buffer><c-k>        <cmd>lua vim.lsp.buf.signature_help()<CR>
+    nnoremap <buffer>gt           <cmd>lua vim.lsp.buf.type_definition()<CR>
+    nnoremap <buffer>gr           <cmd>lua vim.lsp.buf.references()<CR>
+    nnoremap <buffer>g0           <cmd>lua vim.lsp.buf.document_symbol()<CR>
+    nnoremap <buffer>gW           <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+    nnoremap <buffer><F2>         :call LSPRename()<CR>
+
+    nnoremap <buffer>[g           <cmd>NextDiagnosticCycle<CR>
+    nnoremap <buffer>]g           <cmd>PrevDiagnosticCycle<CR>
+    nnoremap <nowait><leader>di  <cmd>OpenDiagnostic<CR>
+
+    nnoremap <nowait><leader>rn  <cmd>lua vim.lsp.buf.rename()<CR>
+    nnoremap <nowait><leader>a   <cmd>lua vim.lsp.buf.code_action()<CR>
+
+    nnoremap <leader>fd           <cmd>lua vim.lsp.buf.formatting()<CR>
+    nnoremap <leader>pd           <cmd>PrettierAsync<CR>
+
 
     " Use <Tab> and <S-Tab> to navigate through popup menu
     inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"

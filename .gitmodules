@@ -67,3 +67,6 @@
 [submodule ".vim/plugged/diagnostic-nvim"]
 	path = .vim/plugged/diagnostic-nvim
 	url = https://github.com/nvim-lua/diagnostic-nvim.git
+[submodule ".vim/plugged/vim-prettier"]
+	path = .vim/plugged/vim-prettier
+	url = https://github.com/prettier/vim-prettier.git

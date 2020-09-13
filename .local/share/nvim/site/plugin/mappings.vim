@@ -29,7 +29,7 @@ if (exists(':CocList'))
   nmap <leader>rn <Plug>(coc-rename)
   nmap <leader>u :UndotreeToggle<CR>
 
-  nnoremap <leader>p :call CocAction('runCommand', 'prettier.formatFile')<CR>
+  "nnoremap <leader>p :call CocAction('runCommand', 'prettier.formatFile')<CR>
 
   " Mappings for CoCList
   " Show all diagnostics.
