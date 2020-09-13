@@ -4,6 +4,7 @@
 nnoremap <leader>pp :GFiles<Cr>
 nnoremap <leader>pg :PRg<Cr>
 nnoremap <leader>ff :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+
 " Files
 nnoremap <leader>pa :Rg<CR>
 nnoremap <leader>pb :Buffers<CR>
@@ -15,6 +16,34 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
+nnoremap <buffer>gD           <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <buffer>gd           <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <buffer>K            <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <buffer>gi           <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <buffer><c-k>        <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <buffer>gt           <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <buffer>gr           <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <buffer>g0           <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <buffer>gW           <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <buffer><F2>         :call LSPRename()<CR>
+
+nnoremap <buffer>[g           <cmd>NextDiagnosticCycle<CR>
+nnoremap <buffer>]g           <cmd>PrevDiagnosticCycle<CR>
+nnoremap <nowait><leader>di  <cmd>OpenDiagnostic<CR>
+
+nnoremap <nowait><leader>rn  <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <nowait><leader>a   <cmd>lua vim.lsp.buf.code_action()<CR>
+
+nnoremap <leader>fd           <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <leader>pd           <cmd>PrettierAsync<CR>
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+"map <c-p> to manually trigger completion
+inoremap <silent><expr> <c-p> completion#trigger_completion()
+
 " GoTo code navigation.
 if (exists(':CocList'))
   nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
@@ -23,9 +52,9 @@ if (exists(':CocList'))
   nmap <silent>gt <Plug>(coc-type-definition)
   nmap <silent>gi <Plug>(coc-implementation)
   nmap <silent>gr <Plug>(coc-references)
-  nmap <silent> [g <Plug>(coc-diagnostic-prev)
-  nmap <silent> ]g <Plug>(coc-diagnostic-next)
-  nmap <silent> <leader>qf <Plug>(coc-fix-current)
+  nmap <silent>[g <Plug>(coc-diagnostic-prev)
+  nmap <silent>]g <Plug>(coc-diagnostic-next)
+  nmap <silent><leader>qf <Plug>(coc-fix-current)
   nmap <leader>rn <Plug>(coc-rename)
   nmap <leader>u :UndotreeToggle<CR>
 
@@ -128,6 +157,16 @@ if (exists(':CocList'))
     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
   endif
 endif
+
+" Spell using fzf
+function! FzfSpellSink(word)
+  exe 'normal! "_ciw'.a:word
+endfunction
+function! FzfSpell()
+  let suggestions = spellsuggest(expand("<cword>"))
+  return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'window': { 'width': 0.8, 'height': 0.8 } })
+endfunction
+nnoremap z= :call FzfSpell()<CR>
 
 if exists(':Scalpel')
   nmap <leader>ss <Plug>(Scalpel)
