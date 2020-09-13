@@ -158,9 +158,6 @@ if (exists(':CocList'))
   endif
 endif
 
-" Spell using fzf
-nnoremap z= :call FzfSpell()<CR>
-
 if exists(':Scalpel')
   nmap <leader>ss <Plug>(Scalpel)
 endif

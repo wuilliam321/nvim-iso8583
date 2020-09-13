@@ -30,6 +30,7 @@ function! s:WAutocmds()
         let suggestions = spellsuggest(expand("<cword>"))
         return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'window': { 'width': 0.8, 'height': 0.8 } })
       endfunction
+      nnoremap z= :call FzfSpell()<CR>
 
   augroup END
 endfunction
