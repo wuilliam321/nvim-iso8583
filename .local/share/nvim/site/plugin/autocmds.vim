@@ -17,11 +17,6 @@ function! s:WAutocmds()
       autocmd BufEnter * lua require'completion'.on_attach()
       autocmd BufEnter * lua require'diagnostic'.on_attach()
 
-      if (exists(':CocList'))
-        "autocmd CursorHold * silent call CocActionAsync('highlight')
-        "autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
-      endif
-
       " Spell using fzf
       function! FzfSpellSink(word)
         exe 'normal! "_ciw'.a:word
@@ -31,6 +26,9 @@ function! s:WAutocmds()
         return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'window': { 'width': 0.8, 'height': 0.8 } })
       endfunction
       nnoremap z= :call FzfSpell()<CR>
+
+      autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+      autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
   augroup END
 endfunction
 

@@ -25,7 +25,7 @@ set expandtab
 set cursorline
 set clipboard=unnamedplus
 set inccommand=nosplit
-set signcolumn=auto:1
+set signcolumn="yes"
 set colorcolumn=80
 set spelllang=en
 set completeopt=menuone,noinsert,noselect
@@ -34,7 +34,6 @@ set omnifunc=v:lua.vim.lsp.omnifunc
 set list
 set listchars=nbsp:⦸
 set listchars+=tab:▷-
-"set listchars+=tab:▷┅
 set listchars+=extends:»
 set listchars+=precedes:«
 set listchars+=trail:•
@@ -46,6 +45,6 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:completion_sorting = "length"
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-let g:diagnostic_show_sign = 0
+let g:diagnostic_show_sign = 1
 let g:diagnostic_insert_delay = 1
 let g:diagnostic_enable_virtual_text = 1

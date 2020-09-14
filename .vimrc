@@ -20,7 +20,7 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 Plug 'sheerun/vim-polyglot'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x'}
-" Pl ug 'vim-syntastic/syntastic'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'sekel/vim-vue-syntastic'
 " Plug 'Quramy/tsuquyomi'
 " Plug 'tweekmonster/gofmt.vim'
@@ -29,12 +29,12 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x'}
 " Plug 'SirVer/ultisnips'
 " Plug 'mlaursen/vim-react-snippets'
 " Plug 'PsychoLlama/snake.vim'
-" Plug 'airblade/vim-rooter'
 " Plug 'phanviet/vim-monokai-pro'
 Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
+Plug 'airblade/vim-rooter'
 call plug#end()
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey

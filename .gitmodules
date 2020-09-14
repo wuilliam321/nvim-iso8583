@@ -70,3 +70,6 @@
 [submodule ".vim/plugged/vim-prettier"]
 	path = .vim/plugged/vim-prettier
 	url = https://github.com/prettier/vim-prettier.git
+[submodule ".vim/plugged/vim-rooter"]
+	path = .vim/plugged/vim-rooter
+	url = git@github.com:airblade/vim-rooter.git

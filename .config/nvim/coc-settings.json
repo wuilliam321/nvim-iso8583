@@ -1,4 +1,5 @@
 {
+  "diagnostic.messageTarget": "echo",
   "eslint.autoFixOnSave": false,
   "coc-actions.hideCursor": true,
   "coc-actions.showActionKind": true,
