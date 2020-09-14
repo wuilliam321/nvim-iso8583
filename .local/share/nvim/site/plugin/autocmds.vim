@@ -31,7 +31,6 @@ function! s:WAutocmds()
         return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'window': { 'width': 0.8, 'height': 0.8 } })
       endfunction
       nnoremap z= :call FzfSpell()<CR>
-
   augroup END
 endfunction
 

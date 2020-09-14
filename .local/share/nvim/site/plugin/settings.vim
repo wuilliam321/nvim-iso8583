@@ -49,6 +49,3 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:diagnostic_show_sign = 0
 let g:diagnostic_insert_delay = 1
 let g:diagnostic_enable_virtual_text = 1
-
-lua package.loaded["mylspconfig"] = nil
-lua require("mylspconfig")

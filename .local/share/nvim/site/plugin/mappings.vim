@@ -16,26 +16,26 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
-nnoremap <buffer>gD           <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <buffer>gd           <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <buffer>K            <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <buffer>gi           <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <buffer><c-k>        <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <buffer>gt           <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <buffer>gr           <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <buffer>g0           <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <buffer>gW           <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <buffer><F2>         :call LSPRename()<CR>
+nnoremap <silent> gD           <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gd           <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K            <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gi           <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k>        <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> gt           <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr           <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0           <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW           <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> <F2>         :call LSPRename()<CR>
 
-nnoremap <buffer>[g           <cmd>NextDiagnosticCycle<CR>
-nnoremap <buffer>]g           <cmd>PrevDiagnosticCycle<CR>
-nnoremap <nowait><leader>di  <cmd>OpenDiagnostic<CR>
+nnoremap <silent> [g           <cmd>NextDiagnosticCycle<CR>
+nnoremap <silent> ]g           <cmd>PrevDiagnosticCycle<CR>
+nnoremap <silent><nowait><leader>di  <cmd>OpenDiagnostic<CR>
 
-nnoremap <nowait><leader>rn  <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <nowait><leader>a   <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent><nowait><leader>rn  <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent><nowait><leader>a   <cmd>lua vim.lsp.buf.code_action()<CR>
 
-nnoremap <leader>fd           <cmd>lua vim.lsp.buf.formatting()<CR>
-nnoremap <leader>pd           <cmd>PrettierAsync<CR>
+nnoremap <silent><leader>fd           <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent><leader>pd           <cmd>PrettierAsync<CR>
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -63,6 +63,7 @@ if (exists(':CocList'))
   " Mappings for CoCList
   " Show all diagnostics.
   nnoremap <silent><nowait> <leader>di  :<C-u>CocList diagnostics<cr>
+
 
   " Manage extensions.
   "nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<cr>
