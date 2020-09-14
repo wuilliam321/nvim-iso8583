@@ -55,4 +55,3 @@ syntax on
 
 lua package.loaded["mylspconfig"] = nil
 lua require("mylspconfig")
-
