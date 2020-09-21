@@ -24,6 +24,7 @@ nvim_lsp.sumneko_lua.setup{
   cmd = {
     lua_server_path .. "bin/Linux/lua-language-server", "-E",
     lua_server_path .. "main.lua"
-  }
+  },
+  on_attach=on_attach_vim
 }
 
