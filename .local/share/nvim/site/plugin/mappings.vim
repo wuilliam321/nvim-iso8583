@@ -64,7 +64,7 @@ inoremap <silent><expr> <TAB>
   \ <SID>check_back_space() ? "\<TAB>" :
   \ completion#trigger_completion()
 
-"inoremap <silent><expr> <c-space> completion#trigger_completion()
+inoremap <silent><expr> <c-space> completion#trigger_completion()
 
 "make Y behave more like C and D
 nnoremap Y y$
