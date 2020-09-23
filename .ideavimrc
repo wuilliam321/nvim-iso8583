@@ -1,0 +1,31 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Common settings -------------------------
+set showmode
+set so=5
+set number
+set relativenumber
+set smartcase
+set smartindent
+set nohlsearch
+set clipboard=unnamedplus
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+"make Y behave more like C and D
+nnoremap Y y$
+
+" Move code
+"vnoremap J :m '>+1<CR>gv=gv
+"vnoremap K :m '<-2<CR>gv=gv
+
+" esc map
+inoremap <C-c> <esc>
+inoremap hh <esc> :w<CR>
+
+"x escapes visual mode
+xnoremap x <Esc>
