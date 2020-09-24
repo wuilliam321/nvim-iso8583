@@ -1,0 +1,24 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 840,
+       "width": 1710,
+       "x": 0,
+       "y": 0
+    },
+    "name": "~",
+    "percent": 1,
+    "swallows": [
+       {
+       "class": "^Alacritty$",
+       "instance": "^Alacritty$",
+       "title": "^\\~$",
+       "transient_for": "^$"
+       }
+    ],
+    "type": "con"
+}
+
