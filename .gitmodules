@@ -73,3 +73,6 @@
 [submodule ".vim/plugged/vim-rooter"]
 	path = .vim/plugged/vim-rooter
 	url = git@github.com:airblade/vim-rooter.git
+[submodule ".vim/plugged/gofmt.vim"]
+	path = .vim/plugged/gofmt.vim
+	url = https://github.com/tweekmonster/gofmt.vim

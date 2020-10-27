@@ -14,7 +14,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'wuilliam321/nvim-lspconfig', { 'branch': 'groovyls-support' }
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'posva/vim-vue'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
@@ -23,7 +23,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'sekel/vim-vue-syntastic'
 " Plug 'Quramy/tsuquyomi'
-" Plug 'tweekmonster/gofmt.vim'
+Plug 'tweekmonster/gofmt.vim'
 " Plug 'mikelue/vim-maven-plugin'
 " Plug 'sebdah/vim-delve'
 " Plug 'SirVer/ultisnips'
