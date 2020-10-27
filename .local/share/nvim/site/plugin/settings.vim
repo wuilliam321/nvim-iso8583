@@ -1,7 +1,7 @@
 set nocompatible
 set rtp+=~/go/bin/fzf
 set noshowmatch
-set shell=/usr/bin/zsh
+set shell=/usr/local/bin/zsh
 set number
 set relativenumber
 set hidden
