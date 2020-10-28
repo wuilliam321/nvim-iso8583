@@ -19,6 +19,10 @@ xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 xmap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
 
 nnoremap <silent> gD                 <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gd                 <cmd>lua vim.lsp.buf.definition()<CR>
@@ -31,6 +35,8 @@ nnoremap <silent> g0                 <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW                 <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> [g                 <cmd>NextDiagnosticCycle<CR>
 nnoremap <silent> ]g                 <cmd>PrevDiagnosticCycle<CR>
+nmap              [c                 <Plug>(coc-git-prevchunk)
+nmap              ]c                 <Plug>(coc-git-nextchunk)
 nmap     <silent> ff                 <Plug>(coc-fix-current)
 xmap     <silent> ff                 <Plug>(coc-fix-current)
 nnoremap <silent><leader>fd          <cmd>lua vim.lsp.buf.formatting()<CR>
