@@ -6,18 +6,5 @@
   "coc-actions.useCursorLine": true,
   "vetur.trace.server": "verbose",
   "vetur.format.defaultFormatter.js": "prettier-eslint",
-  "vetur.experimental.templateInterpolationService": true,
-  "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "usePlaceholders": true
-      }
-    }
-  },
-  "go.disable": {
-    "workspaceFolders": false
-  }
+  "vetur.experimental.templateInterpolationService": true
 }
