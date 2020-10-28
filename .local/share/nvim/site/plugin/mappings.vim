@@ -53,6 +53,7 @@ nnoremap <silent><nowait><leader>di  <cmd>OpenDiagnostic<CR>
 nmap <silent><leader>gh              :diffget //2<CR>
 nmap <silent><leader>gl              :diffget //3<CR>
 nmap <silent><leader>gs              :G<CR>
+nmap <silent><leader>gc              :Gcommit<CR>
 nmap <silent><leader>u               :UndotreeToggle<CR>
 nmap <silent><leader>ss              <Plug>(Scalpel)
 
