@@ -1,1 +1,6 @@
-{"dependencies":{}}
+{
+  "dependencies": {
+    "coc-git": ">=2.0.4",
+    "coc-tsserver": ">=1.6.0"
+  }
+}
