@@ -6,5 +6,6 @@
   "coc-actions.useCursorLine": true,
   "vetur.trace.server": "verbose",
   "vetur.format.defaultFormatter.js": "prettier-eslint",
-  "vetur.experimental.templateInterpolationService": true
+  "vetur.experimental.templateInterpolationService": true,
+  "suggest.keepCompleteopt": true
 }

@@ -7,7 +7,7 @@ function! s:WAutocmds()
 
   augroup WAutocmds
       autocmd!
-      autocmd VimEnter * :VimApm
+      " autocmd VimEnter * :VimApm
       autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
       autocmd BufWritePre * :call TrimWhitespace()
       autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>

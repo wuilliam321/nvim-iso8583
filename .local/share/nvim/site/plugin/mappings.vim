@@ -37,8 +37,8 @@ nnoremap <silent> [g                 <cmd>NextDiagnosticCycle<CR>
 nnoremap <silent> ]g                 <cmd>PrevDiagnosticCycle<CR>
 nmap              [c                 <Plug>(coc-git-prevchunk)
 nmap              ]c                 <Plug>(coc-git-nextchunk)
-nmap     <silent> ff                 <Plug>(coc-fix-current)
-xmap     <silent> ff                 <Plug>(coc-fix-current)
+nmap     <silent> fc                 <Plug>(coc-fix-current)
+xmap     <silent> fc                 <Plug>(coc-fix-current)
 nnoremap <silent><leader>fd          <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent><leader>pd          <cmd>PrettierAsync<CR>
 nnoremap <silent><leader>+           :vertical resize +5<CR>
@@ -56,20 +56,21 @@ nmap <silent><leader>gs              :G<CR>
 nmap <silent><leader>gc              :Gcommit<CR>
 nmap <silent><leader>u               :UndotreeToggle<CR>
 nmap <silent><leader>ss              <Plug>(Scalpel)
+nmap <silent><leader>m               :MaximizerToggle<CR>
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+" function! s:check_back_space() abort
+"     let col = col('.') - 1
+"     return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction
 
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ completion#trigger_completion()
+" inoremap <silent><expr> <TAB>
+"   \ pumvisible() ? "\<C-n>" :
+"   \ <SID>check_back_space() ? "\<TAB>" :
+"   \ completion#trigger_completion()
 
 inoremap <silent><expr> <c-space> completion#trigger_completion()
 

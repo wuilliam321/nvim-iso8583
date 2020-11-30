@@ -76,3 +76,9 @@
 [submodule ".vim/plugged/gofmt.vim"]
 	path = .vim/plugged/gofmt.vim
 	url = https://github.com/tweekmonster/gofmt.vim
+[submodule ".vim/plugged/vim-maximizer"]
+	path = .vim/plugged/vim-maximizer
+	url = https://github.com/szw/vim-maximizer
+[submodule ".vim/plugged/vimspector"]
+	path = .vim/plugged/vimspector
+	url = https://github.com/szw/puremourning/vimspector
