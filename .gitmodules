@@ -82,3 +82,6 @@
 [submodule ".vim/plugged/vimspector"]
 	path = .vim/plugged/vimspector
 	url = https://github.com/szw/puremourning/vimspector
+[submodule ".vim/plugged/rainbow_csv"]
+	path = .vim/plugged/rainbow_csv
+	url = https://github.com/mechatroner/rainbow_csv
