@@ -33,10 +33,10 @@ nnoremap <silent> gt                 <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> gr                 <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g0                 <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW                 <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> [g                 <cmd>NextDiagnosticCycle<CR>
-nnoremap <silent> ]g                 <cmd>PrevDiagnosticCycle<CR>
-nmap              [c                 <Plug>(coc-git-prevchunk)
-nmap              ]c                 <Plug>(coc-git-nextchunk)
+nnoremap <silent> [g                 <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> ]g                 <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nmap              ]c                 <Plug>(coc-git-prevchunk)
+nmap              [c                 <Plug>(coc-git-nextchunk)
 nmap     <silent> fc                 <Plug>(coc-fix-current)
 xmap     <silent> fc                 <Plug>(coc-fix-current)
 nnoremap <silent><leader>fd          <cmd>lua vim.lsp.buf.formatting()<CR>
@@ -49,7 +49,7 @@ nnoremap <silent><leader>k           :wincmd k<CR>
 nnoremap <silent><leader>l           :wincmd l<CR>
 nnoremap <silent><nowait><leader>rn  <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent><nowait><leader>a   <cmd>lua vim.lsp.buf.code_action()<CR>
-nnoremap <silent><nowait><leader>di  <cmd>OpenDiagnostic<CR>
+nnoremap <silent><nowait><leader>di  <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
 nmap <silent><leader>gh              :diffget //2<CR>
 nmap <silent><leader>gl              :diffget //3<CR>
 nmap <silent><leader>gs              :G<CR>

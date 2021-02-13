@@ -13,11 +13,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
-Plug 'wuilliam321/nvim-lspconfig', { 'branch': 'groovyls-support' }
+Plug 'neovim/nvim-lspconfig'
+" Plug 'wuilliam321/nvim-lspconfig', { 'branch': 'groovyls-support' }
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'posva/vim-vue'
 Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
 Plug 'sheerun/vim-polyglot'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -37,6 +37,8 @@ Plug 'mhinz/vim-startify'
 Plug 'airblade/vim-rooter'
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
+Plug 'mechatroner/rainbow_csv'
+" Plug 'codota/tabnine-vim'
 call plug#end()
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey

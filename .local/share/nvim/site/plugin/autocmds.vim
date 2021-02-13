@@ -27,6 +27,9 @@ function! s:WAutocmds()
 
       autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
       autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
+
+      " To shows diagnostic tooltip on cursor hold
+      " autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
   augroup END
 endfunction
 
