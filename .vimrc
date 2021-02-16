@@ -3,33 +3,18 @@ filetype off
 let mapleader = " "
 
 call plug#begin('~/.vim/plugged')
-Plug 'ThePrimeagen/vim-be-good'
-Plug 'ThePrimeagen/vim-apm'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree'
 Plug 'wincent/scalpel'
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'neovim/nvim-lspconfig'
-" Plug 'wuilliam321/nvim-lspconfig', { 'branch': 'groovyls-support' }
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'posva/vim-vue'
-Plug 'nvim-lua/completion-nvim'
 Plug 'sheerun/vim-polyglot'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x'}
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'sekel/vim-vue-syntastic'
-" Plug 'Quramy/tsuquyomi'
 Plug 'tweekmonster/gofmt.vim'
-" Plug 'mikelue/vim-maven-plugin'
-" Plug 'sebdah/vim-delve'
-" Plug 'SirVer/ultisnips'
-" Plug 'mlaursen/vim-react-snippets'
-" Plug 'PsychoLlama/snake.vim'
-" Plug 'phanviet/vim-monokai-pro'
 Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -38,7 +23,14 @@ Plug 'airblade/vim-rooter'
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 Plug 'mechatroner/rainbow_csv'
-" Plug 'codota/tabnine-vim'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'dbeniamine/cheat.sh-vim'
 call plug#end()
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -59,3 +51,4 @@ syntax on
 
 lua package.loaded["mylspconfig"] = nil
 lua require("mylspconfig")
+lua require('nvim-treesitter.configs').setup { highlight = { enable = true } }

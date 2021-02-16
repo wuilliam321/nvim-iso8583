@@ -16,7 +16,7 @@ set nowritebackup
 set undodir=~/.vim/undodir
 set undofile
 set noshowmode
-set cmdheight=2
+set cmdheight=1
 set updatetime=50
 set shortmess+=c
 set tabstop=2 softtabstop=2
@@ -30,6 +30,8 @@ set colorcolumn=80
 set spelllang=es,en
 set completeopt=menuone,noinsert,noselect
 set omnifunc=v:lua.vim.lsp.omnifunc
+set scrolloff=8
+set tags=tags
 
 set list
 set listchars=nbsp:⦸
@@ -52,3 +54,4 @@ let g:completion_enable_auto_popup = 1
 let g:diagnostic_show_sign = 1
 let g:diagnostic_insert_delay = 1
 let g:diagnostic_enable_virtual_text = 1
+let g:CheatSheetBaseUrl='http://localhost:8002'

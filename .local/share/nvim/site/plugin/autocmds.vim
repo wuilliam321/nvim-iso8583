@@ -16,14 +16,14 @@ function! s:WAutocmds()
       autocmd FileType gitcommit setlocal complete+=kspell
 
       " Spell using fzf
-      function! FzfSpellSink(word)
-        exe 'normal! "_ciw'.a:word
-      endfunction
-      function! FzfSpell()
-        let suggestions = spellsuggest(expand("<cword>"))
-        return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'window': { 'width': 0.8, 'height': 0.8 } })
-      endfunction
-      nnoremap z= :call FzfSpell()<CR>
+      " function! FzfSpellSink(word)
+      "   exe 'normal! "_ciw'.a:word
+      " endfunction
+      " function! FzfSpell()
+      "   let suggestions = spellsuggest(expand("<cword>"))
+      "   return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'window': { 'width': 0.8, 'height': 0.8 } })
+      " endfunction
+      " nnoremap z= :call FzfSpell()<CR>
 
       autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
       autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
