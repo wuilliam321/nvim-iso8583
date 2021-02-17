@@ -54,4 +54,4 @@ let g:completion_enable_auto_popup = 1
 let g:diagnostic_show_sign = 1
 let g:diagnostic_insert_delay = 1
 let g:diagnostic_enable_virtual_text = 1
-let g:CheatSheetBaseUrl='http://localhost:8002'
+" let g:CheatSheetBaseUrl='http://localhost:8002'

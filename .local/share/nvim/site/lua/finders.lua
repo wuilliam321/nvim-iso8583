@@ -4,7 +4,7 @@ local finders = {}
 -- Dropdown list theme using a builtin theme definitions :
 local no_preview = require'telescope.themes'.get_dropdown({
   winblend = 10,
-  width = 0.8,
+  width = 0.5,
   prompt = " >",
   results_height = 15,
   previewer = false,
@@ -14,7 +14,7 @@ local no_preview = require'telescope.themes'.get_dropdown({
 local with_preview = require'telescope.themes'.get_dropdown({
   winblend = 10,
   prompt = " >",
-  width = 0.8,
+  width = 0.5,
   results_height = 15,
   results_title = false,
   layout_config = {
@@ -65,7 +65,7 @@ finders.project_word = function()
 end
 
 finders.quickfix = function()
-  local opts = vim.deepcopy(no_preview)
+  local opts = vim.deepcopy(with_preview)
   require'telescope.builtin'.quickfix(opts)
 end
 
@@ -77,6 +77,14 @@ end
 finders.keymaps = function()
   local opts = vim.deepcopy(no_preview)
   require'telescope.builtin'.keymaps(opts)
+end
+
+finders.buffer_diagnostics = function()
+  local opts = vim.deepcopy(no_preview)
+  opts.prompt_title = 'Diagnostics'
+  vim.lsp.diagnostic.set_loclist()
+  vim.cmd [[lclose]]
+  require('telescope.builtin').loclist(opts)
 end
 
 return finders

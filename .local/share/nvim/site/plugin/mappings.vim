@@ -89,11 +89,11 @@ nnoremap <silent><leader>l           :wincmd l<CR>
 nnoremap <silent><nowait><leader>rn  <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent><nowait><leader>a   <cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_dropdown({}))<CR>
 nnoremap <silent><nowait><leader>ra  <cmd>lua require('telescope.builtin').lsp_range_code_actions(require('telescope.themes').get_dropdown({}))<CR>
-nnoremap <silent><nowait><leader>di  <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <silent><nowait><leader>di  <cmd>lua require('finders').buffer_diagnostics()<CR>
 nmap <silent><leader>gh              :diffget //2<CR>
 nmap <silent><leader>gl              :diffget //3<CR>
 nmap <silent><leader>gs              :G<CR>
-nmap <silent><leader>gc              :Gcommit<CR>
+nmap <silent><leader>gc              :Git commit<CR>
 nmap <silent><leader>u               :UndotreeToggle<CR>
 nmap <silent><leader>ss              <Plug>(Scalpel)
 nmap <silent><leader>m               :MaximizerToggle<CR>
