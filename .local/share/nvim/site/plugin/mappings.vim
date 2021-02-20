@@ -101,21 +101,10 @@ nmap <silent><leader>m               :MaximizerToggle<CR>
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <c-space> completion#trigger_completion()
 
 nnoremap <silent><C-up>            :cprev<CR>
 nnoremap <silent><C-down>          :cnext<CR>
-
-" function! s:check_back_space() abort
-"     let col = col('.') - 1
-"     return !col || getline('.')[col - 1]  =~ '\s'
-" endfunction
-
-" inoremap <silent><expr> <TAB>
-"   \ pumvisible() ? "\<C-n>" :
-"   \ <SID>check_back_space() ? "\<TAB>" :
-"   \ completion#trigger_completion()
-
-inoremap <silent><expr> <c-space> completion#trigger_completion()
 
 "make Y behave more like C and D
 nnoremap Y y$

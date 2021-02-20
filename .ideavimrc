@@ -25,7 +25,6 @@ nnoremap Y y$
 
 " esc map
 inoremap <C-c> <esc>
-inoremap hh <esc> :w<CR>
 
 "x escapes visual mode
 xnoremap x <Esc>

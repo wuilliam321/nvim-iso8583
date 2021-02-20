@@ -34,7 +34,12 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 lspconfig.vuels.setup{on_attach=on_attach_vim}
 lspconfig.gopls.setup{on_attach=on_attach_vim}
-lspconfig.html.setup{on_attach=on_attach_vim}
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+lspconfig.html.setup{on_attach=on_attach_vim,capabilities=capabilities}
+
+lspconfig.cssls.setup{on_attach=on_attach_vim,capabilities=capabilities}
 lspconfig.jsonls.setup{on_attach=on_attach_vim}
 lspconfig.pyls.setup{on_attach=on_attach_vim}
 -- lspconfig.jdtls.setup{on_attach=on_attach_vim}
