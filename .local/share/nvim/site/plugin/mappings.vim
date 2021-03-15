@@ -13,7 +13,7 @@ require('telescope').setup {
     mappings = {
       i = {
         ["<C-x>"] = false,
-        ["<C-s>"] = actions.goto_file_selection_split,
+        ["<C-s>"] = actions.select_vertical,
         ["<C-q>"] = actions.send_to_qflist,
       },
     }
@@ -23,6 +23,10 @@ EOF
 
 "reload vimrc
 nnoremap <leader>so :source ~/.config/nvim/init.vim<CR>
+
+" Cheat.sh
+nnoremap <script> <silent> <leader>CS :call cheat#cheat("", getcurpos()[1], getcurpos()[1], 0, 0, '!')<CR>
+vnoremap <script> <silent> <leader>CS :call cheat#cheat("", -1, -1, 2, 0, '!')<CR>
 
 " Open files / find files
 nnoremap <leader>ff :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
@@ -103,8 +107,8 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent><expr> <c-space> completion#trigger_completion()
 
-nnoremap <silent><C-up>            :cprev<CR>
-nnoremap <silent><C-down>          :cnext<CR>
+nnoremap <silent><C-k>            :cprev<CR>
+nnoremap <silent><C-j>            :cnext<CR>
 
 "make Y behave more like C and D
 nnoremap Y y$
@@ -119,3 +123,18 @@ inoremap <C-c> <esc>
 
 "x escapes visual mode
 xnoremap x <Esc>
+
+if exists('g:vscode')
+xmap gc  <Plug>VSCodeCommentary
+nmap gc  <Plug>VSCodeCommentary
+omap gc  <Plug>VSCodeCommentary
+nmap gcc <Plug>VSCodeCommentaryLine
+nnoremap <silent> K :<C-u>call VSCodeNotify('editor.action.showHover')<CR>
+nnoremap <silent> gr :<C-u>call VSCodeNotify('editor.action.goToReferences')<CR>
+nnoremap <silent> gi :<C-u>call VSCodeNotify('editor.action.goToImplementation')<CR>
+nnoremap <silent> gd :<C-u>call VSCodeNotify('editor.action.peekDefinition')<CR>
+xnoremap <silent> K :<C-u>call <SID>hover()<CR>
+xnoremap <silent> gr :<C-u>call VSCodeNotify('editor.action.goToReferences')<CR>
+xnoremap <silent> gi :<C-u>call VSCodeNotify('editor.action.goToImplementation')<CR>
+xnoremap <silent> gd :<C-u>call VSCodeNotify('editor.action.peekDefinition')<CR>
+endif

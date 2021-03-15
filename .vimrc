@@ -31,6 +31,8 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'dbeniamine/cheat.sh-vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'buoto/gotests-vim'
 call plug#end()
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
