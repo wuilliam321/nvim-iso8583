@@ -1,1 +1,4 @@
-"execute 'noautocmd set filetype=' . substitute(&filetype, 'typescriptreact', 'typescript', '')
+" augroup typescriptreact
+"     autocmd!
+"     au BufReadPre, BufNewFile *.tsx set filetype=typescript.tsx
+" augroup END

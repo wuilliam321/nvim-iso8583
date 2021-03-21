@@ -1,3 +1,7 @@
 .local/share/nvim/log
 .local/share/nvim/shada/
 .nvimlog
+.vim
+.config/configstore
+.config/yarn
+.DS_Store
