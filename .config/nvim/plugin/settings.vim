@@ -18,7 +18,6 @@ set undofile
 set noshowmode
 set cmdheight=1
 set updatetime=50
-set shortmess+=c
 set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
@@ -41,7 +40,7 @@ set listchars+=precedes:«
 set listchars+=trail:•
 set nojoinspaces
 
-let g:language_client_log_level = 'debug'
+let g:language_client_log_level = '' " debug
 let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25

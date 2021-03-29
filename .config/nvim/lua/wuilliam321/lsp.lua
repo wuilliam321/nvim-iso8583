@@ -1,9 +1,5 @@
 local lspconfig = require'lspconfig'
 
-local on_attach_vim = function(client)
-  require'completion'.on_attach(client)
-end
-
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     -- Enable underline, use default values
@@ -32,25 +28,26 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
-lspconfig.vuels.setup{on_attach=on_attach_vim}
-lspconfig.gopls.setup{on_attach=on_attach_vim}
+local on_attach_vim = function(client)
+  require'completion'.on_attach(client)
+end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-lspconfig.html.setup{on_attach=on_attach_vim,capabilities=capabilities}
 
+lspconfig.html.setup{on_attach=on_attach_vim,capabilities=capabilities}
 lspconfig.cssls.setup{on_attach=on_attach_vim,capabilities=capabilities}
+lspconfig.vuels.setup{on_attach=on_attach_vim}
+lspconfig.gopls.setup{on_attach=on_attach_vim}
 lspconfig.jsonls.setup{on_attach=on_attach_vim}
 lspconfig.pyls.setup{on_attach=on_attach_vim}
 -- lspconfig.jdtls.setup{on_attach=on_attach_vim}
 lspconfig.groovyls.setup{on_attach=require'completion'.on_attach}
 lspconfig.clangd.setup{on_attach=on_attach_vim}
-
 lspconfig.tsserver.setup{
   root_dir = lspconfig.util.root_pattern("tsconfig.json", ".git"),
   on_attach=on_attach_vim
 }
-
 local lua_server_path = "/Users/wuilliam.lacruz/Downloads/lua-language-server/"
 lspconfig.sumneko_lua.setup{
   cmd = {

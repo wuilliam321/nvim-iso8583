@@ -16,16 +16,16 @@ nnoremap <leader>km  <cmd>lua require('wuilliam321.finders').keymaps()<cr>
 nnoremap <leader>plg <cmd>lua require('wuilliam321.finders').project_live_grep()<cr>
 
 "harpoon
-nnoremap <leader>mb  <cmd>lua require('harpoon.mark').add_file()<cr>
-nnoremap <leader>md  <cmd>lua require('harpoon.mark').rm_file()<cr>
-nnoremap <leader>mp  <cmd>lua require('harpoon.mark').promote()<cr>
-nnoremap <leader>mc  <cmd>lua require('harpoon.mark').clear_all(4)<cr>
-nnoremap <leader>mm  <cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>
-nnoremap <leader>mq  <cmd>lua require('harpoon.ui').to_quickfix_list()<cr>
-nnoremap <leader>mu  <cmd>lua require('harpoon.ui').nav_file(1)<cr>
-nnoremap <leader>me  <cmd>lua require('harpoon.ui').nav_file(2)<cr>
-nnoremap <leader>mo  <cmd>lua require('harpoon.ui').nav_file(3)<cr>
-nnoremap <leader>ma  <cmd>lua require('harpoon.ui').nav_file(4)<cr>
+nnoremap <leader>mb <cmd>lua require('harpoon.mark').add_file()<cr>
+nnoremap <leader>md <cmd>lua require('harpoon.mark').rm_file()<cr>
+nnoremap <leader>mp <cmd>lua require('harpoon.mark').promote()<cr>
+nnoremap <leader>mc <cmd>lua require('harpoon.mark').clear_all(4)<cr>
+nnoremap <leader>mm <cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>
+nnoremap <leader>mq <cmd>lua require('harpoon.ui').to_quickfix_list()<cr>
+nnoremap <leader>mu <cmd>lua require('harpoon.ui').nav_file(1)<cr>
+nnoremap <leader>me <cmd>lua require('harpoon.ui').nav_file(2)<cr>
+nnoremap <leader>mo <cmd>lua require('harpoon.ui').nav_file(3)<cr>
+nnoremap <leader>ma <cmd>lua require('harpoon.ui').nav_file(4)<cr>
 
 "code navigation
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -45,6 +45,12 @@ nnoremap <silent><C-h>  :cprev<CR>
 nnoremap <silent><C-l>  :cnext<CR>
 nnoremap <leader>pw     <cmd>lua require('wuilliam321.finders').project_word()<cr>
 
+"remap to prevent leader h to messed
+nnoremap <Space>ghp                 @<Plug>(GitGutterPreviewHunk)
+nnoremap <Space>ghu                 @<Plug>(GitGutterUndoHunk)
+nnoremap <Space>ghs                 @<Plug>(GitGutterStageHunk)
+xnoremap <Space>ghs                 @<Plug>(GitGutterStageHunk)
+
 "windows management / navigation
 nnoremap <silent><leader>h :wincmd h<CR>
 nnoremap <silent><leader>j :wincmd j<CR>
@@ -56,7 +62,7 @@ nnoremap <silent><leader>- :vertical resize -5<CR>
 "code actions
 nnoremap <silent><nowait><leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent><nowait><leader>a  <cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_dropdown({}))<CR>
-nnoremap <silent><nowait><leader>ra <cmd>lua require('telescope.builtin').lsp_range_code_actions(require('telescope.themes').get_dropdown({}))<CR>
+nnoremap <silent><nowait><leader>ca <cmd>lua require('telescope.builtin').lsp_range_code_actions(require('telescope.themes').get_dropdown({}))<CR>
 nnoremap <silent><leader>fd <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent><leader>fr <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent><leader>pd <cmd>PrettierAsync<CR>

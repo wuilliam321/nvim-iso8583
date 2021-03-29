@@ -2,6 +2,8 @@
 .local/share/nvim/shada/
 .nvimlog
 .vim
+.vim/plugged
 .config/configstore
 .config/yarn
+.config/iterm2
 .DS_Store

@@ -8,7 +8,7 @@ function! s:WAutocmds()
   augroup WAutocmds
       autocmd!
       " autocmd VimEnter * :VimApm
-      autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+      autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
       autocmd BufWritePre * :call TrimWhitespace()
       autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
       autocmd FileType markdown setlocal spell
