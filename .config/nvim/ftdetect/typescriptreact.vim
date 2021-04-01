@@ -1,4 +1,4 @@
-" augroup typescriptreact
-"     autocmd!
-"     au BufReadPre, BufNewFile *.tsx set filetype=typescript.tsx
-" augroup END
+augroup typescriptreact
+    autocmd!
+    autocmd BufNew,BufNewFile,BufRead *.tsx setlocal filetype=typescriptreact
+augroup END

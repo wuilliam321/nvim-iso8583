@@ -67,7 +67,7 @@ nnoremap <silent><leader>fd <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent><leader>fr <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent><leader>pd <cmd>PrettierAsync<CR>
 nnoremap <silent><leader>ss <Plug>(Scalpel)
-nnoremap <silent>z= <cmd>lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_dropdown({ previewer = false }))<cr>
+nnoremap <silent>s= <cmd>lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_dropdown({ previewer = false }))<cr>
 
 "git
 nmap <silent><leader>gh :diffget //2<CR>
