@@ -12,7 +12,7 @@ nnoremap <leader>di  <cmd>lua require('wuilliam321.finders').buffer_diagnostics(
 nnoremap <leader>bf  <cmd>lua require('wuilliam321.finders').buffer_find()<cr>
 nnoremap <leader>ch  <cmd>lua require('wuilliam321.finders').command_history()<cr>
 nnoremap <leader>qf  :cclose<cr><bar><cmd>lua require('wuilliam321.finders').quickfix()<cr>
-nnoremap <leader>km  <cmd>lua require('wuilliam321.finders').keymaps()<cr>
+" nnoremap <leader>km  <cmd>lua require('wuilliam321.finders').keymaps()<cr>
 nnoremap <leader>plg <cmd>lua require('wuilliam321.finders').project_live_grep()<cr>
 
 "harpoon
@@ -66,8 +66,8 @@ nnoremap <silent><nowait><leader>ca <cmd>lua require('telescope.builtin').lsp_ra
 nnoremap <silent><leader>fd <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent><leader>fr <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent><leader>pd <cmd>PrettierAsync<CR>
-nnoremap <silent><leader>ss <Plug>(Scalpel)
-nnoremap <silent>s= <cmd>lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_dropdown({ previewer = false }))<cr>
+nnoremap <silent>z= <cmd>lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_dropdown({ previewer = false }))<cr>
+nmap <Leader>ss <Plug>(Scalpel)
 
 "git
 nmap <silent><leader>gh :diffget //2<CR>
