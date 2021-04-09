@@ -15,7 +15,6 @@ set noswapfile
 set nowritebackup
 set undodir=~/.vim/undodir
 set undofile
-set noshowmode
 set cmdheight=1
 set updatetime=500
 set tabstop=2 softtabstop=2

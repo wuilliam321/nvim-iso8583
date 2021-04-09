@@ -61,8 +61,8 @@ nnoremap <silent><leader>- :vertical resize -5<CR>
 
 "code actions
 nnoremap <silent><nowait><leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent><nowait><leader>a  <cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_dropdown({}))<CR>
-nnoremap <silent><nowait><leader>ca <cmd>lua require('telescope.builtin').lsp_range_code_actions(require('telescope.themes').get_dropdown({}))<CR>
+nnoremap <silent><nowait><leader>a  <cmd>lua require('telescope.builtin').lsp_range_code_actions(require('telescope.themes').get_dropdown({}))<CR>
+nnoremap <silent><nowait><leader>ca <cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_dropdown({}))<CR>
 nnoremap <silent><leader>fd <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent><leader>fr <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent><leader>pd <cmd>PrettierAsync<CR>
