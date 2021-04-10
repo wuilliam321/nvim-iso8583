@@ -1,3 +1,4 @@
+require"wuilliam321.harpoon"
 require"wuilliam321.finders"
 require"wuilliam321.lsp"
 require"wuilliam321.telescope"

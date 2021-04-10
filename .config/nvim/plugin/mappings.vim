@@ -26,6 +26,14 @@ nnoremap <leader>mu <cmd>lua require('harpoon.ui').nav_file(1)<cr>
 nnoremap <leader>me <cmd>lua require('harpoon.ui').nav_file(2)<cr>
 nnoremap <leader>mo <cmd>lua require('harpoon.ui').nav_file(3)<cr>
 nnoremap <leader>ma <cmd>lua require('harpoon.ui').nav_file(4)<cr>
+nnoremap <leader>tu <cmd>lua require("harpoon.term").gotoTerminal(1)<CR>
+nnoremap <leader>te <cmd>lua require("harpoon.term").gotoTerminal(2)<CR>
+nnoremap <leader>to <cmd>lua require("harpoon.term").gotoTerminal(3)<CR>
+nnoremap <leader>ta <cmd>lua require("harpoon.term").gotoTerminal(4)<CR>
+nnoremap <leader>cu <cmd>lua require("harpoon.term").sendCommand(1, 1)<CR>
+nnoremap <leader>ce <cmd>lua require("harpoon.term").sendCommand(1, 2)<CR>
+nnoremap <leader>co <cmd>lua require("harpoon.term").sendCommand(1, 3)<CR>
+nnoremap <leader>ca <cmd>lua require("harpoon.term").sendCommand(1, 4)<CR>
 
 "code navigation
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -44,6 +52,7 @@ nnoremap <silent> ]g    <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent><C-h>  :cprev<CR>
 nnoremap <silent><C-l>  :cnext<CR>
 nnoremap <leader>pw     <cmd>lua require('wuilliam321.finders').project_word()<cr>
+nnoremap <leader>td     <cmd>:vsplit<CR><cmd>:e ~/dotfiles/notes.md<CR>
 
 "remap to prevent leader h to messed
 nnoremap <Space>ghp                 @<Plug>(GitGutterPreviewHunk)
@@ -95,6 +104,7 @@ nnoremap Y y$
 
 " esc map
 inoremap <C-c> <esc>
+tnoremap <Esc> <C-\><C-n>
 
 "x escapes visual mode
 xnoremap x <Esc>
