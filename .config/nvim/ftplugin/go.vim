@@ -5,6 +5,9 @@ setlocal autowrite
 
 nnoremap <leader>pd :Gofmt<CR>
 
+nnoremap <leader>mt <cmd>lua require("harpoon.term").sendCommand(1, 1)<CR>
+nnoremap <leader>mw <cmd>lua require("harpoon.term").sendCommand(2, 2)<CR>
+
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_fmt_command='goimports'

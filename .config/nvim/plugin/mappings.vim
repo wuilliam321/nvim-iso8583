@@ -31,9 +31,9 @@ nnoremap <leader>te <cmd>lua require("harpoon.term").gotoTerminal(2)<CR>
 nnoremap <leader>to <cmd>lua require("harpoon.term").gotoTerminal(3)<CR>
 nnoremap <leader>ta <cmd>lua require("harpoon.term").gotoTerminal(4)<CR>
 nnoremap <leader>cu <cmd>lua require("harpoon.term").sendCommand(1, 1)<CR>
-nnoremap <leader>ce <cmd>lua require("harpoon.term").sendCommand(1, 2)<CR>
-nnoremap <leader>co <cmd>lua require("harpoon.term").sendCommand(1, 3)<CR>
-nnoremap <leader>ca <cmd>lua require("harpoon.term").sendCommand(1, 4)<CR>
+nnoremap <leader>ce <cmd>lua require("harpoon.term").sendCommand(2, 2)<CR>
+nnoremap <leader>co <cmd>lua require("harpoon.term").sendCommand(3, 3)<CR>
+nnoremap <leader>ca <cmd>lua require("harpoon.term").sendCommand(4, 4)<CR>
 
 "code navigation
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
