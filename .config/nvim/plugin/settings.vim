@@ -9,6 +9,7 @@ set nowrap
 set smartcase
 set smartindent
 set incsearch
+" set noshowmode
 set nohlsearch
 set nobackup
 set noswapfile
@@ -21,6 +22,7 @@ set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
 set cursorline
+set cursorcolumn
 set clipboard=unnamedplus
 set inccommand=nosplit
 set signcolumn=yes
@@ -54,4 +56,4 @@ let g:diagnostic_insert_delay = 1
 let g:diagnostic_enable_virtual_text = 1
 " let g:CheatSheetBaseUrl='http://localhost:8002'
 
-" highlight Comment term=bold cterm=italic ctermfg=white gui=italic guifg=white
+" highlight Comment term=bold cterm=italic ctermfg=yellow gui=italic guifg=yellow
