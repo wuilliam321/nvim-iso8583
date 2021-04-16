@@ -36,6 +36,10 @@ Plug 'ThePrimeagen/harpoon'
 "misc
 Plug 'airblade/vim-rooter'
 Plug 'gruvbox-community/gruvbox'
+Plug 'hoob3rt/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'kyazdani42/nvim-web-devicons'
+" Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
