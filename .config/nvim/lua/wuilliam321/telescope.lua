@@ -2,7 +2,16 @@ local actions = require'telescope.actions'
 
 require'telescope'.setup {
   defaults = {
-    file_sorter = require'telescope.sorters'.get_fzy_sorter,
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--no-ignore'
+    },
     prompt_prefix = ' >',
     color_devicons = true,
     file_ignore_patterns = { "vendor/.*", "swagger/.*" },
@@ -13,10 +22,18 @@ require'telescope'.setup {
 
     mappings = {
       i = {
-        ["<C-x>"] = false,
-        ["<C-s>"] = actions.select_vertical,
         ["<C-q>"] = actions.send_to_qflist,
       },
     }
   },
+  extensions = {
+    fzf = {
+      override_generic_sorter = false, -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
+  }
 }
+
+require('telescope').load_extension('fzf')

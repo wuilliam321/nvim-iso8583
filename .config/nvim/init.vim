@@ -14,7 +14,7 @@ Plug 'szw/vim-maximizer'
 Plug 'tweekmonster/gofmt.vim'
 Plug 'buoto/gotests-vim'
 "external utils
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 Plug 'puremourning/vimspector'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'airblade/vim-gitgutter'
@@ -26,20 +26,16 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x'}
 Plug 'mechatroner/rainbow_csv'
-" Plug 'sheerun/vim-polyglot' "not needed?
-" Plug 'posva/vim-vue'        "not needed?
 "telescope/novigation
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'ThePrimeagen/harpoon'
 "misc
-Plug 'airblade/vim-rooter'
 Plug 'gruvbox-community/gruvbox'
 Plug 'hoob3rt/lualine.nvim'
-" If you want to have icons in your statusline choose one of these
 Plug 'kyazdani42/nvim-web-devicons'
-" Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey

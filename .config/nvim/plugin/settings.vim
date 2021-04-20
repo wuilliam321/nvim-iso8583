@@ -2,6 +2,12 @@ set nocompatible
 set rtp+=~/go/bin/fzf
 set noshowmatch
 set shell=/usr/local/bin/zsh
+set title
+"set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
+" remove to anoyning press space for more
+set nomore
+set autowrite
+set autoread
 set number
 set relativenumber
 set hidden
@@ -9,7 +15,6 @@ set nowrap
 set smartcase
 set smartindent
 set incsearch
-" set noshowmode
 set nohlsearch
 set nobackup
 set noswapfile
@@ -45,6 +50,9 @@ let g:language_client_log_level = '' " debug
 let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
+" let g:netrw_sort_by="time"
+" let g:netrw_sort_direction="reverse"
+" let g:netrw_sort_options = "i"
 let g:completion_sorting = "length"
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:completion_matching_smart_case = 1

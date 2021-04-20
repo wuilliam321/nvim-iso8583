@@ -22,3 +22,6 @@
 " set statusline+=\ %p%%
 " set statusline+=\ %l:%c
 " set statusline+=\
+
+" Enable because we are using lualine
+set noshowmode

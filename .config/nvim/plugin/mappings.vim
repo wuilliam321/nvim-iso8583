@@ -106,6 +106,9 @@ nnoremap Y y$
 inoremap <C-c> <esc>
 tnoremap <Esc> <C-\><C-n>
 
+inoremap <expr>  <C-k>   BDG_GetDigraph()
+" inoremap <expr>  <C-k>   HUDG_GetDigraph()
+
 "x escapes visual mode
 xnoremap x <Esc>
 
