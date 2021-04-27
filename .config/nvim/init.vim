@@ -26,6 +26,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x'}
 Plug 'mechatroner/rainbow_csv'
+Plug 'udalov/kotlin-vim'
 "telescope/novigation
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'

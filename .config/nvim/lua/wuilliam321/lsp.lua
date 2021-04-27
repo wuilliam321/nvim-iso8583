@@ -35,6 +35,24 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+
+local kotlin_server_path = "/Users/wuilliam.lacruz/Downloads/kotlin-language-server/"
+lspconfig.kotlin_language_server.setup{
+  settings = {
+    kotlin = {
+      compiler = {
+        jvm = {
+          target = "1.8";
+        }
+      };
+    };
+  },
+  cmd = {
+    kotlin_server_path .. "server/build/install/server/bin/kotlin-language-server"
+  },
+  on_attach=on_attach_vim,
+  filetypes = { "kotlin", "kt" }
+}
 lspconfig.html.setup{on_attach=on_attach_vim,capabilities=capabilities}
 lspconfig.cssls.setup{on_attach=on_attach_vim,capabilities=capabilities}
 lspconfig.vuels.setup{on_attach=on_attach_vim}

@@ -5,21 +5,23 @@ local finders = {}
 local no_preview = require'telescope.themes'.get_dropdown({
   winblend = 10,
   width = 0.5,
-  prompt = " >",
+  prompt = " > ",
   results_height = 15,
   previewer = false,
+  shorten_path = true,
 })
 
 -- Settings for with preview option
 local with_preview = require'telescope.themes'.get_dropdown({
   winblend = 10,
-  prompt = " >",
+  prompt = " > ",
   width = 0.5,
   results_height = 15,
   results_title = false,
   layout_config = {
     preview_width = 0.5,
   },
+  shorten_path = true,
 })
 
 finders.git_files = function()
