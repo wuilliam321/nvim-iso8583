@@ -23,7 +23,8 @@ Plug 'dbeniamine/cheat.sh-vim'
 "code style / completion / helpers
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x'}
 Plug 'mechatroner/rainbow_csv'
 Plug 'udalov/kotlin-vim'

@@ -86,10 +86,12 @@ nmap <silent><leader>gc :Git commit<CR>
 nmap <silent><leader>u  :UndotreeToggle<CR>
 nmap <silent><leader>m  :MaximizerToggle<CR>
 
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <silent><expr> <c-space> completion#trigger_completion()
+" compe
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " Cheat.sh
 nnoremap <script> <silent> <leader>CS :call cheat#cheat("", getcurpos()[1], getcurpos()[1], 0, 0, '!')<CR>

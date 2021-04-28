@@ -28,13 +28,15 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
-local on_attach_vim = function(client)
-  require'completion'.on_attach(client)
-end
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
 
 local kotlin_server_path = "/Users/wuilliam.lacruz/Downloads/kotlin-language-server/"
 lspconfig.kotlin_language_server.setup{
@@ -50,21 +52,21 @@ lspconfig.kotlin_language_server.setup{
   cmd = {
     kotlin_server_path .. "server/build/install/server/bin/kotlin-language-server"
   },
-  on_attach=on_attach_vim,
-  filetypes = { "kotlin", "kt" }
+  filetypes = { "kotlin" },
+  capabilities=capabilities
 }
-lspconfig.html.setup{on_attach=on_attach_vim,capabilities=capabilities}
-lspconfig.cssls.setup{on_attach=on_attach_vim,capabilities=capabilities}
-lspconfig.vuels.setup{on_attach=on_attach_vim}
-lspconfig.gopls.setup{on_attach=on_attach_vim}
-lspconfig.jsonls.setup{on_attach=on_attach_vim}
-lspconfig.pyls.setup{on_attach=on_attach_vim}
--- lspconfig.jdtls.setup{on_attach=on_attach_vim}
-lspconfig.groovyls.setup{on_attach=require'completion'.on_attach}
-lspconfig.clangd.setup{on_attach=on_attach_vim}
+lspconfig.html.setup{capabilities=capabilities}
+lspconfig.cssls.setup{capabilities=capabilities}
+lspconfig.vuels.setup{capabilities=capabilities}
+lspconfig.gopls.setup{capabilities=capabilities}
+lspconfig.jsonls.setup{capabilities=capabilities}
+lspconfig.pyls.setup{capabilities=capabilities}
+-- lspconfig.jdtls.setup{}
+lspconfig.groovyls.setup{capabilities=capabilities}
+lspconfig.clangd.setup{capabilities=capabilities}
 lspconfig.tsserver.setup{
   root_dir = lspconfig.util.root_pattern("tsconfig.json", ".git"),
-  on_attach=on_attach_vim
+  capabilities=capabilities
 }
 local lua_server_path = "/Users/wuilliam.lacruz/Downloads/lua-language-server/"
 lspconfig.sumneko_lua.setup{
@@ -72,6 +74,6 @@ lspconfig.sumneko_lua.setup{
     lua_server_path .. "bin/macOS/lua-language-server", "-E",
     lua_server_path .. "main.lua"
   },
-  on_attach=on_attach_vim
+  capabilities=capabilities
 }
 
