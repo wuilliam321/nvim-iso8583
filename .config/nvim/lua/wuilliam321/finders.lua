@@ -66,6 +66,12 @@ finders.project_word = function()
   require'telescope.builtin'.grep_string(opts)
 end
 
+finders.find_symbol = function ()
+  local opts = vim.deepcopy(with_preview)
+  opts.query = vim.fn.expand("<cword>")
+  require'telescope.builtin'.lsp_workspace_symbols(opts)
+end
+
 finders.quickfix = function()
   local opts = vim.deepcopy(with_preview)
   require'telescope.builtin'.quickfix(opts)

@@ -1,30 +1,49 @@
-""" Map leader to space ---------------------
 let mapleader=" "
 
-""" Common settings -------------------------
 set showmode
+set noerrorbells
 set so=5
 set number
 set relativenumber
 set smartcase
 set smartindent
 set nohlsearch
-set clipboard=unnamedplus
 
-""" Idea specific settings ------------------
+set clipboard=unnamedplus
+set surround
+set commentary
+set highlightedyank
+
 set ideajoin
-set ideastatusicon=gray
+set ideaput
 set idearefactormode=keep
 
 "make Y behave more like C and D
 nnoremap Y y$
 
-" Move code
-"vnoremap J :m '>+1<CR>gv=gv
-"vnoremap K :m '<-2<CR>gv=gv
-
 " esc map
 inoremap <C-c> <esc>
 
-"x escapes visual mode
 xnoremap x <Esc>
+
+map gr <Action>(GotoDeclaration)
+map gi <Action>(GotoImplementation)
+map [g <Action>(GotoNextError)
+map ]g <Action>(GotoPreviousError)
+map <leader>pp <Action>(GotoFile)
+map <leader>pg <Action>(FindInPath)
+"map <leader>pb <Action>(RecentFiles)
+map <leader>pb <Action>(Switcher)
+map <leader>h <C-w>h
+map <leader>l <C-w>l
+map <leader>j <C-w>j
+map <leader>k <C-w>k
+map <leader>mw <Action>(ChooseDebugConfiguration)
+map <leader>mt <Action>(ChooseDebugConfiguration)
+map <leader>gs <Action>(CheckinProject)
+map <leader>db <Action>(ActivateDatabaseToolWindow)
+map <C-l> <Action>(NextTab)
+map <C-h> <Action>(PreviousTab)
+map <leader>tu <Action>(ActivateTerminalToolWindow)
+map <leader>te <Action>(ActivateTerminalToolWindow)
+map <leader>to <Action>(ActivateTerminalToolWindow)

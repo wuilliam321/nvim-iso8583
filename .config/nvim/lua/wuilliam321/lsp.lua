@@ -61,7 +61,7 @@ lspconfig.vuels.setup{capabilities=capabilities}
 lspconfig.gopls.setup{capabilities=capabilities}
 lspconfig.jsonls.setup{capabilities=capabilities}
 lspconfig.pyls.setup{capabilities=capabilities}
--- lspconfig.jdtls.setup{}
+-- lspconfig.jdtls.setup{capabilities=capabilities}
 lspconfig.groovyls.setup{capabilities=capabilities}
 lspconfig.clangd.setup{capabilities=capabilities}
 lspconfig.tsserver.setup{

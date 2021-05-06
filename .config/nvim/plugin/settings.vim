@@ -37,6 +37,7 @@ set completeopt=menuone,noselect
 set omnifunc=v:lua.vim.lsp.omnifunc
 set scrolloff=8
 set tags=tags
+set shortmess+=c
 
 set list
 set listchars=nbsp:⦸

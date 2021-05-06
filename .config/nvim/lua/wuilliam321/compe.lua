@@ -17,9 +17,10 @@ compe.setup {
   source = {
     path = true;
     buffer = true;
+    spell = true;
     calc = true;
     nvim_lsp = true;
     nvim_lua = true;
-    vsnip = true;
+    -- vsnip = true;
   };
 }

@@ -44,7 +44,8 @@ nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> gt    <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<cr>
 nnoremap <silent> g0    <cmd>lua require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_dropdown({}))<CR>
-nnoremap <silent> gW    <cmd>lua require('telescope.builtin').lsp_workspace_symbols(require('telescope.themes').get_dropdown({}))<CR>
+" nnoremap <silent> gW    <cmd>lua require('telescope.builtin').lsp_workspace_symbols(require('telescope.themes').get_dropdown({}))<CR>
+nnoremap <silent> gW    <cmd>lua require('wuilliam321.finders').find_symbol()<cr>
 nnoremap <silent> ]c    <Plug>(GitGutterPrevHunk)
 nnoremap <silent> [c    <Plug>(GitGutterNextHunk)
 nnoremap <silent> [g    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
@@ -73,7 +74,7 @@ nnoremap <silent><nowait><leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent><nowait><leader>a  <cmd>lua require('telescope.builtin').lsp_range_code_actions(require('telescope.themes').get_dropdown({}))<CR>
 nnoremap <silent><nowait><leader>ca <cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_dropdown({}))<CR>
 nnoremap <silent><leader>fd <cmd>lua vim.lsp.buf.formatting()<CR>
-nnoremap <silent><leader>fr <cmd>lua vim.lsp.buf.range_formatting()<CR>
+vnoremap <silent><leader>fd <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent><leader>pd <cmd>PrettierAsync<CR>
 nnoremap <silent>z= <cmd>lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_dropdown({ previewer = false }))<cr>
 nmap <Leader>ss <Plug>(Scalpel)
@@ -92,6 +93,18 @@ inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+" snippets
+" imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+" smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+
+" imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+" smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
+" imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+" smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+" imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+" smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
 " Cheat.sh
 nnoremap <script> <silent> <leader>CS :call cheat#cheat("", getcurpos()[1], getcurpos()[1], 0, 0, '!')<CR>

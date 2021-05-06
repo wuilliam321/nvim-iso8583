@@ -39,6 +39,14 @@ require("harpoon").setup({
                     "make web\n"
                 }
             }
+        },
+        ["/Users/wuilliam.lacruz/w/shopper-balance-service"] = {
+            term = {
+                cmds = {
+                    "make test\n",
+                    "make web\n"
+                }
+            }
         }
     }
 })
