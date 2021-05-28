@@ -68,6 +68,7 @@ nnoremap <silent><leader>k :wincmd k<CR>
 nnoremap <silent><leader>l :wincmd l<CR>
 nnoremap <silent><leader>+ :vertical resize +5<CR>
 nnoremap <silent><leader>- :vertical resize -5<CR>
+nnoremap <silent><c-w>a    :CloseOthers<CR>
 
 "code actions
 nnoremap <silent><nowait><leader>rn <cmd>lua vim.lsp.buf.rename()<CR>

@@ -47,6 +47,14 @@ require("harpoon").setup({
                     "make web\n"
                 }
             }
+        },
+        ["/Users/wuilliam.lacruz/p/katas/design-patterns"] = {
+            term = {
+                cmds = {
+                    "make test\n",
+                    "make build\n"
+                }
+            }
         }
     }
 })
