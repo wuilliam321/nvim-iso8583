@@ -12,8 +12,6 @@ function! s:WAutocmds()
       autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
       autocmd FileType gitcommit setlocal spell
       autocmd FileType gitcommit setlocal complete+=kspell
-      autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
-      autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()
   augroup END
 endfunction
 

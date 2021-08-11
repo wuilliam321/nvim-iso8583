@@ -48,10 +48,10 @@ nnoremap <silent> g0    <cmd>lua require('telescope.builtin').lsp_document_symbo
 nnoremap <silent> gW    <cmd>lua require('wuilliam321.finders').find_symbol()<cr>
 nnoremap <silent> ]c    <Plug>(GitGutterPrevHunk)
 nnoremap <silent> [c    <Plug>(GitGutterNextHunk)
-nnoremap <silent> [g    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent> ]g    <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent><C-h>  :cprev<CR>
-nnoremap <silent><C-l>  :cnext<CR>
+nnoremap <silent> [g    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
+nnoremap <silent> ]g    <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
+nnoremap <silent><C-h>  :cprev<CR>zz
+nnoremap <silent><C-l>  :cnext<CR>zz
 nnoremap <leader>pw     <cmd>lua require('wuilliam321.finders').project_word()<cr>
 nnoremap <leader>td     <cmd>:vsplit<CR><cmd>:e ~/dotfiles/notes.md<CR>
 
@@ -77,7 +77,7 @@ nnoremap <silent><nowait><leader>ca <cmd>lua require('telescope.builtin').lsp_co
 nnoremap <silent><leader>fd <cmd>lua vim.lsp.buf.formatting()<CR>
 vnoremap <silent><leader>fd <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent><leader>pd <cmd>PrettierAsync<CR>
-nnoremap <silent>z= <cmd>lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_dropdown({ previewer = false }))<cr>
+nnoremap <leader>z= <cmd>lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_dropdown({ previewer = false }))<cr>
 nmap <Leader>ss <Plug>(Scalpel)
 
 "git
@@ -113,6 +113,16 @@ vnoremap <script> <silent> <leader>CS :call cheat#cheat("", -1, -1, 2, 0, '!')<C
 
 "make Y behave more like C and D
 nnoremap Y y$
+
+"center on next/prev
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" add more undo beakpoints
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
 
 " Move code
 "vnoremap J :m '>+1<CR>gv=gv
