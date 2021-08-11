@@ -55,6 +55,14 @@ require("harpoon").setup({
                     "make build\n"
                 }
             }
+        },
+        ["/Users/wuilliam.lacruz/go/src/github.com/pedidosya/items-catalogue-management-service"] = {
+            term = {
+                cmds = {
+                    "make test\n",
+                    "make web\n"
+                }
+            }
         }
     }
 })
