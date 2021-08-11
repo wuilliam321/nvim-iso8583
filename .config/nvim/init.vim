@@ -1,3 +1,4 @@
+if !exists('g:vscode')
 filetype off
 
 let mapleader = " "
@@ -59,3 +60,4 @@ filetype plugin indent on
 syntax on
 
 lua require('wuilliam321')
+endif
