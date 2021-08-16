@@ -61,7 +61,6 @@ lspconfig.vuels.setup{capabilities=capabilities}
 lspconfig.gopls.setup{capabilities=capabilities}
 lspconfig.jsonls.setup{capabilities=capabilities}
 lspconfig.pylsp.setup{capabilities=capabilities}
--- lspconfig.jdtls.setup{capabilities=capabilities}
 lspconfig.groovyls.setup{capabilities=capabilities}
 lspconfig.clangd.setup{capabilities=capabilities}
 lspconfig.dockerls.setup{capabilities=capabilities}

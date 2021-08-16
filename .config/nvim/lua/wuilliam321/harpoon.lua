@@ -63,6 +63,14 @@ require("harpoon").setup({
                     "make web\n"
                 }
             }
+        },
+        ["/Users/wuilliam.lacruz/workspace/shein_automation"] = {
+            term = {
+                cmds = {
+                    "gradle test\n",
+                    "gradle build\n"
+                }
+            }
         }
     }
 })

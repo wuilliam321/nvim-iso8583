@@ -6,7 +6,7 @@ nnoremap <leader>pp  <cmd>lua require('wuilliam321.finders').git_files()<cr>
 nnoremap <leader>pf  <cmd>lua require('wuilliam321.finders').project_find()<cr>
 nnoremap <leader>pg  <cmd>lua require('wuilliam321.finders').project_grep()<cr>
 nnoremap <leader>pb  <cmd>lua require('wuilliam321.finders').buffers()<cr>
-nnoremap <leader>ff :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <leader>ff  :Vex<CR>
 nnoremap <leader>ph  <cmd>lua require('wuilliam321.finders').help_tags()<cr>
 nnoremap <leader>di  <cmd>lua require('wuilliam321.finders').buffer_diagnostics()<CR>
 nnoremap <leader>bf  <cmd>lua require('wuilliam321.finders').buffer_find()<cr>
@@ -48,10 +48,10 @@ nnoremap <silent> g0    <cmd>lua require('telescope.builtin').lsp_document_symbo
 nnoremap <silent> gW    <cmd>lua require('wuilliam321.finders').find_symbol()<cr>
 nnoremap <silent> ]c    <Plug>(GitGutterPrevHunk)
 nnoremap <silent> [c    <Plug>(GitGutterNextHunk)
-nnoremap <silent> [g    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
-nnoremap <silent> ]g    <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
-nnoremap <silent><C-h>  :cprev<CR>zz
-nnoremap <silent><C-l>  :cnext<CR>zz
+nnoremap <silent> [g    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zt
+nnoremap <silent> ]g    <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zt
+nnoremap <silent><C-h>  :cprev<CR>zt
+nnoremap <silent><C-l>  :cnext<CR>zt
 nnoremap <leader>pw     <cmd>lua require('wuilliam321.finders').project_word()<cr>
 nnoremap <leader>td     <cmd>:vsplit<CR><cmd>:e ~/dotfiles/notes.md<CR>
 
@@ -115,8 +115,8 @@ vnoremap <script> <silent> <leader>CS :call cheat#cheat("", -1, -1, 2, 0, '!')<C
 nnoremap Y y$
 
 "center on next/prev
-nnoremap n nzzzv
-nnoremap N Nzzzv
+nnoremap n nztzv
+nnoremap N Nztzv
 
 " add more undo beakpoints
 inoremap , ,<c-g>u

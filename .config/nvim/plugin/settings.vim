@@ -48,9 +48,9 @@ set listchars+=trail:•
 set nojoinspaces
 
 let g:language_client_log_level = '' " debug
-let g:netrw_browse_split = 2
+" let g:netrw_browse_split = 2
 let g:netrw_banner = 0
-let g:netrw_winsize = 25
+" let g:netrw_winsize = 70
 " let g:netrw_sort_by="time"
 " let g:netrw_sort_direction="reverse"
 " let g:netrw_sort_options = "i"
