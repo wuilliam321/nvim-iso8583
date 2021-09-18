@@ -71,6 +71,14 @@ require("harpoon").setup({
                     "gradle build\n"
                 }
             }
+        },
+        ["/Users/wuilliam.lacruz/go/src/github.com/pedidosya/portal-users-migration-service"] = {
+            term = {
+                cmds = {
+                    "make test\n",
+                    "make web\n"
+                }
+            }
         }
     }
 })

@@ -42,6 +42,8 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'gruvbox-community/gruvbox'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/todo-comments.nvim'
+Plug 'tyru/current-func-info.vim'
 call plug#end()
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey

@@ -15,6 +15,16 @@ nnoremap <leader>qf  :cclose<cr><bar><cmd>lua require('wuilliam321.finders').qui
 " nnoremap <leader>km  <cmd>lua require('wuilliam321.finders').keymaps()<cr>
 nnoremap <leader>plg <cmd>lua require('wuilliam321.finders').project_live_grep()<cr>
 
+"testing/debugging
+nnoremap <leader>da <cmd>call vimspector#LaunchWithSettings( #{ configuration: "app" } )<cr>
+nnoremap <leader>df <cmd>call vimspector#LaunchWithSettings( #{ configuration: "file" } )<cr>
+nnoremap <leader>dm <cmd>call vimspector#LaunchWithSettings( #{ configuration: "method", Test: "^" . cfi#format("%s", "") . "$" } )<cr>
+nnoremap <leader>ds <cmd>VimspectorReset<cr>
+nnoremap <leader>bp <cmd>call vimspector#ToggleBreakpoint()<cr>
+nnoremap <leader>n <cmd>call vimspector#StepOver()<cr>
+nnoremap <leader>c <cmd>call vimspector#Continue()<cr>
+
+
 "harpoon
 nnoremap <leader>mb <cmd>lua require('harpoon.mark').add_file()<cr>
 nnoremap <leader>md <cmd>lua require('harpoon.mark').rm_file()<cr>
@@ -48,8 +58,8 @@ nnoremap <silent> g0    <cmd>lua require('telescope.builtin').lsp_document_symbo
 nnoremap <silent> gW    <cmd>lua require('wuilliam321.finders').find_symbol()<cr>
 nnoremap <silent> ]c    <Plug>(GitGutterPrevHunk)
 nnoremap <silent> [c    <Plug>(GitGutterNextHunk)
-nnoremap <silent> [g    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zt
-nnoremap <silent> ]g    <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zt
+nnoremap <silent> [g    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
+nnoremap <silent> ]g    <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
 nnoremap <silent><C-h>  :cprev<CR>zt
 nnoremap <silent><C-l>  :cnext<CR>zt
 nnoremap <leader>pw     <cmd>lua require('wuilliam321.finders').project_word()<cr>
@@ -77,7 +87,7 @@ nnoremap <silent><nowait><leader>ca <cmd>lua require('telescope.builtin').lsp_co
 nnoremap <silent><leader>fd <cmd>lua vim.lsp.buf.formatting()<CR>
 vnoremap <silent><leader>fd <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent><leader>pd <cmd>PrettierAsync<CR>
-nnoremap <leader>z= <cmd>lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_dropdown({ previewer = false }))<cr>
+nnoremap <silent>z= <cmd>lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_dropdown({ previewer = false }))<cr>
 nmap <Leader>ss <Plug>(Scalpel)
 
 "git
