@@ -24,8 +24,11 @@ Plug 'dbeniamine/cheat.sh-vim'
 "code style / completion / helpers
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
-Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/nvim-cmp'
+" Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
 Plug 'mfussenegger/nvim-jdtls'
 " Plug 'hrsh7th/vim-vsnip'
 " Plug 'hrsh7th/vim-vsnip-integ'
