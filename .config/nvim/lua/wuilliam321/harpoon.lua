@@ -79,6 +79,23 @@ require("harpoon").setup({
                     "make web\n"
                 }
             }
+        },
+        ["/Users/wuilliam.lacruz/go/src/github.com/pedidosya/product-availability-service"] = {
+            term = {
+                cmds = {
+                    "make test\n",
+                    "make web\n"
+                }
+            }
+        },
+        ["/Users/wuilliam.lacruz/go/src/github.com/pedidosya/schedule-management-service"] = {
+            term = {
+                cmds = {
+                    "make test\n",
+                    "make web\n"
+                }
+            }
         }
     }
 })
+
