@@ -56,10 +56,10 @@ nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<cr>
 nnoremap <silent> g0    <cmd>lua require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_dropdown({}))<CR>
 " nnoremap <silent> gW    <cmd>lua require('telescope.builtin').lsp_workspace_symbols(require('telescope.themes').get_dropdown({}))<CR>
 nnoremap <silent> gW    <cmd>lua require('wuilliam321.finders').find_symbol()<cr>
-nnoremap <silent> ]c    <Plug>(GitGutterPrevHunk)
-nnoremap <silent> [c    <Plug>(GitGutterNextHunk)
-nnoremap <silent> [g    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
-nnoremap <silent> ]g    <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
+nnoremap <silent> [h    :GitGutterPrevHunk<CR>zt
+nnoremap <silent> ]h    :GitGutterNextHunk<CR>zt
+nnoremap <silent> [g    <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>zz
+nnoremap <silent> ]g    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>zz
 nnoremap <silent><C-h>  :cprev<CR>zt
 nnoremap <silent><C-l>  :cnext<CR>zt
 nnoremap <leader>pw     <cmd>lua require('wuilliam321.finders').project_word()<cr>
