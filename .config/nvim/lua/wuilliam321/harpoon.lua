@@ -95,7 +95,15 @@ require("harpoon").setup({
                     "make web\n"
                 }
             }
-        }
+        },
+        ["/Users/wuilliam.lacruz/go/src/github.com/pedidosya/opening-times-adapter-service"] = {
+            term = {
+                cmds = {
+                    "make test\n",
+                    "make web\n"
+                }
+            }
+        },
     }
 })
 

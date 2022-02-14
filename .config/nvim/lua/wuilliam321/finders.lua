@@ -86,4 +86,28 @@ finders.buffer_diagnostics = function()
   require('telescope.builtin').loclist(opts)
 end
 
+finders.lsp_definitions = function()
+  local opts = vim.deepcopy(with_preview)
+  opts.prompt_title = 'Definitions/Declarations'
+  require('telescope.builtin').lsp_definitions(opts)
+end
+
+finders.lsp_implementations = function()
+  local opts = vim.deepcopy(with_preview)
+  opts.prompt_title = 'Implementations'
+  require('telescope.builtin').lsp_implementations(opts)
+end
+
+finders.lsp_type_definitions = function()
+  local opts = vim.deepcopy(with_preview)
+  opts.prompt_title = 'Type Definitions'
+  require('telescope.builtin').lsp_type_definitions(opts)
+end
+
+finders.lsp_references = function()
+  local opts = vim.deepcopy(with_preview)
+  opts.prompt_title = 'References'
+  require('telescope.builtin').lsp_references(opts)
+end
+
 return finders

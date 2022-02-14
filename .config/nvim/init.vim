@@ -29,12 +29,14 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'onsails/lspkind-nvim'
 Plug 'mfussenegger/nvim-jdtls'
+Plug 'github/copilot.vim'
 " Plug 'hrsh7th/vim-vsnip'
 " Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x'}
 Plug 'mechatroner/rainbow_csv'
-Plug 'udalov/kotlin-vim'
+" Plug 'udalov/kotlin-vim' " not needed for now
 "telescope/novigation
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -47,6 +49,7 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/todo-comments.nvim'
 Plug 'tyru/current-func-info.vim'
+Plug 'kristijanhusak/vim-carbon-now-sh'
 call plug#end()
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey

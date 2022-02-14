@@ -9,11 +9,11 @@ nnoremap <leader>pb  <cmd>lua require('wuilliam321.finders').buffers()<cr>
 nnoremap <leader>ff  :Vex<CR>
 nnoremap <leader>ph  <cmd>lua require('wuilliam321.finders').help_tags()<cr>
 nnoremap <leader>di  <cmd>lua require('wuilliam321.finders').buffer_diagnostics()<CR>
-nnoremap <leader>bf  <cmd>lua require('wuilliam321.finders').buffer_find()<cr>
+nnoremap <leader>fg  <cmd>lua require('wuilliam321.finders').buffer_find()<cr>
 nnoremap <leader>ch  <cmd>lua require('wuilliam321.finders').command_history()<cr>
-nnoremap <leader>qf  :cclose<cr><bar><cmd>lua require('wuilliam321.finders').quickfix()<cr>
+" nnoremap <leader>qf  :cclose<cr><bar><cmd>lua require('wuilliam321.finders').quickfix()<cr>
 " nnoremap <leader>km  <cmd>lua require('wuilliam321.finders').keymaps()<cr>
-nnoremap <leader>plg <cmd>lua require('wuilliam321.finders').project_live_grep()<cr>
+" nnoremap <leader>plg <cmd>lua require('wuilliam321.finders').project_live_grep()<cr>
 
 "testing/debugging
 nnoremap <leader>da <cmd>call vimspector#LaunchWithSettings( #{ configuration: "app" } )<cr>
@@ -47,12 +47,12 @@ nnoremap <leader>ca <cmd>lua require("harpoon.term").sendCommand(4, 4)<CR>
 
 "code navigation
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gd    <cmd>lua require('wuilliam321.finders').lsp_definitions()<cr>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> gi    <cmd>lua require('wuilliam321.finders').lsp_implementations()<cr>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> gt    <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<cr>
+nnoremap <silent> gt    <cmd>lua require('wuilliam321.finders').lsp_type_definitions()<CR>
+nnoremap <silent> gr    <cmd>lua require('wuilliam321.finders').lsp_references()<cr>
 nnoremap <silent> g0    <cmd>lua require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_dropdown({}))<CR>
 " nnoremap <silent> gW    <cmd>lua require('telescope.builtin').lsp_workspace_symbols(require('telescope.themes').get_dropdown({}))<CR>
 nnoremap <silent> gW    <cmd>lua require('wuilliam321.finders').find_symbol()<cr>
@@ -82,8 +82,12 @@ nnoremap <silent><c-w>a    :CloseOthers<CR>
 
 "code actions
 nnoremap <silent><nowait><leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent><nowait><leader>a  <cmd>lua require('telescope.builtin').lsp_range_code_actions(require('telescope.themes').get_dropdown({}))<CR>
-nnoremap <silent><nowait><leader>ca <cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_dropdown({}))<CR>
+" nnoremap <silent><nowait><leader>a  <cmd>lua require('telescope.builtin').lsp_range_code_actions(require('telescope.themes').get_dropdown({}))<CR>
+" nnoremap <silent><nowait><leader>ca <cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_dropdown({}))<CR>
+nnoremap <silent><leader>a  :Telescope lsp_range_code_actions<CR>
+nnoremap <silent><leader>ca :Telescope lsp_code_actions<CR>
+vnoremap <silent><leader>a  :Telescope lsp_range_code_actions<CR>
+vnoremap <silent><leader>ca :Telescope lsp_code_actions<CR>
 nnoremap <silent><leader>fd <cmd>lua vim.lsp.buf.formatting()<CR>
 vnoremap <silent><leader>fd <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent><leader>pd <cmd>PrettierAsync<CR>
