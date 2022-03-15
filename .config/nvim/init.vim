@@ -50,6 +50,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/todo-comments.nvim'
 Plug 'tyru/current-func-info.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'romgrk/nvim-treesitter-context'
 call plug#end()
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
