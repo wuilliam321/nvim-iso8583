@@ -16,6 +16,9 @@ local no_preview = require'telescope.themes'.get_dropdown({
   winblend = 10,
   prompt = " > ",
   previewer = false,
+  path_display = {
+    smart = 1,
+  }
 })
 
 -- Settings for with preview option
@@ -23,6 +26,9 @@ local with_preview = require'telescope.themes'.get_dropdown({
   winblend = 10,
   prompt = " > ",
   results_title = false,
+  path_display = {
+    smart = 1,
+  }
 })
 
 custom_finders.cheatsheets = function(opts)
@@ -33,6 +39,7 @@ custom_finders.cheatsheets = function(opts)
   local languages = {
     { "go", {filetype = "go", name = "Golang"}},
     { "javascript", {filetype = "js", name = "Javascript"}},
+    { "markdown", {filetype = "markdown", name = "Markdown"}},
     -- { "typescript", {filetype = "ts", name = "TypeScript"}},
     -- { "typescriptreact", {filetype = "tsx", name = "TypeScript React"}},
     -- { "json", {filetype = "json", name = "JSON"}},
@@ -100,9 +107,6 @@ custom_finders.projects = function()
     '~/go/src/github.com/pedidosya',
   }
   opts.find_command = { "fd", "--type", "d", "-d", "1" }
-  opts.path_display = {
-    shorten = 2,
-  }
   opts.attach_mappings = function(prompt_bufnr)
     action_set.select:replace(function()
       local entry = action_state.get_selected_entry()
