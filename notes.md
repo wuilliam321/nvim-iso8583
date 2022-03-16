@@ -1,3 +1,10 @@
+
+VIM - study and test those fugitive commands *fugitive_c*
+
+
+
+
+
 Print of the school certificate //
 CV carlos
 review https://github.com/deliveryhero/dh-gss-adapter-api/pull/2/files
