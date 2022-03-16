@@ -2,6 +2,7 @@ local opts = {noremap = true, silent = true, nowait = true}
 
 local mappings = {
   -- find
+  {"n", "<Leader>pa", "<cmd>lua require('wuilliam321.finders').projects()<cr>", opts},
   {"n", "<Leader>pp", "<cmd>lua require('wuilliam321.finders').git_files()<cr>", opts},
   {"n", "<leader>pf", "<cmd>lua require('wuilliam321.finders').project_find()<cr>", opts},
   {"n", "<leader>pg", "<cmd>lua require('wuilliam321.finders').project_grep()<cr>", opts},

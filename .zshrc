@@ -111,6 +111,7 @@ alias tunnel="/Users/wuilliam.lacruz/w/product-it-documentation/infrastructure/s
 # alias swag="docker run --rm -it  --user $(id -u):$(id -g) -p 34000:34000 -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
 alias ctags="`brew --prefix`/bin/ctags"
 alias td="nvim ~/dotfiles/notes.md"
+alias dot="cd ~/dotfiles; nvim"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

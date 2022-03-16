@@ -1,3 +1,8 @@
+local action_set = require "telescope.actions.set"
+local action_state = require "telescope.actions.state"
+local actions = require "telescope.actions"
+local from_entry = require "telescope.from_entry"
+
 -- in lua/finders.lua
 local finders = {}
 
@@ -14,6 +19,33 @@ local with_preview = require'telescope.themes'.get_dropdown({
   prompt = " > ",
   results_title = false,
 })
+
+finders.projects = function()
+  local opts = vim.deepcopy(no_preview)
+  opts.search_dirs = {
+    -- '~/w',
+    '~/dh',
+    '~/go/src/github.com/deliveryhero',
+    '~/go/src/github.com/pedidosya',
+  }
+  opts.find_command = { "fd", "--type", "d", "-d", "1" }
+  opts.path_display = {
+    shorten = 2,
+  }
+  opts.attach_mappings = function(prompt_bufnr)
+    action_set.select:replace(function()
+      local entry = action_state.get_selected_entry()
+      actions.close(prompt_bufnr)
+      local dir = from_entry.path(entry)
+      vim.fn.execute("cd " .. dir, "silent")
+      vim.schedule(function()
+        finders.git_files()
+      end)
+    end)
+    return true
+  end
+  require'telescope.builtin'.find_files(opts)
+end
 
 finders.git_files = function()
   local opts = vim.deepcopy(no_preview)
