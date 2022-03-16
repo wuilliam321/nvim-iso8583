@@ -40,11 +40,13 @@ set tags=tags
 set shortmess+=c
 
 set list
-set listchars=nbsp:⦸
+set listchars=nbsp:␣
+set listchars+=space:␣
 set listchars+=tab:▷-
 set listchars+=extends:»
 set listchars+=precedes:«
 set listchars+=trail:•
+set listchars+=eol:↲
 set nojoinspaces
 
 let g:language_client_log_level = '' " debug
