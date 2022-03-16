@@ -76,6 +76,13 @@ lspconfig.sumneko_lua.setup{
     lua_server_path .. "bin/macOS/lua-language-server", "-E",
     lua_server_path .. "main.lua"
   },
-  capabilities=capabilities
+  capabilities=capabilities,
+  settings = {
+      Lua = {
+          diagnostics = {
+              globals = { 'vim' }
+          }
+      }
+  }
 }
 

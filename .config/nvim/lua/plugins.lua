@@ -1,9 +1,9 @@
-vim.cmd [[packadd packer.nvim]]
-
 require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
+
   -- useful tools
   use 'mbbill/undotree'
-  use 'wincent/scalpel'
+  -- use 'wincent/scalpel'
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
   use 'tpope/vim-commentary'
@@ -47,8 +47,5 @@ require('packer').startup(function(use)
   use 'folke/todo-comments.nvim'
   use 'tyru/current-func-info.vim'
   use 'kristijanhusak/vim-carbon-now-sh'
-  use 'romgrk/nvim-treesitter-context'
+  -- use 'romgrk/nvim-treesitter-context'
 end)
-
-print "end plugins"
-
