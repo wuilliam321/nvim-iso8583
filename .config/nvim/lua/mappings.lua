@@ -11,6 +11,7 @@ local mappings = {
   {"n", "<leader>ph", "<cmd>lua require('wuilliam321.finders').help_tags()<cr>", opts},
   {"n", "<leader>di", "<cmd>lua require('wuilliam321.finders').buffer_diagnostics()<CR>", opts},
   {"n", "<leader>fg", "<cmd>lua require('wuilliam321.finders').buffer_find()<cr>", opts},
+  {"n", "<Leader>cs", "<cmd>lua require('wuilliam321.finders').cheatsheets({filetype = vim.bo.filetype })<cr>", opts},
 
   -- windows management / navigation
   {"n", "<leader>h", ":wincmd h<CR>", opts},
