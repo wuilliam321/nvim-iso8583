@@ -60,7 +60,12 @@ lspconfig.html.setup{capabilities=capabilities}
 lspconfig.cssls.setup{capabilities=capabilities}
 lspconfig.vuels.setup{capabilities=capabilities}
 lspconfig.gopls.setup{capabilities=capabilities}
-lspconfig.golangci_lint_ls.setup{capabilities=capabilities}
+lspconfig.golangci_lint_ls.setup{
+  init_options = {
+    command = { 'golangci-lint', 'run', '-E', 'goimports', 'dupl', 'goconst', 'gomnd', '--out-format', 'json' },
+  },
+  capabilities=capabilities
+}
 lspconfig.jsonls.setup{capabilities=capabilities}
 lspconfig.pylsp.setup{capabilities=capabilities}
 lspconfig.groovyls.setup{capabilities=capabilities}
