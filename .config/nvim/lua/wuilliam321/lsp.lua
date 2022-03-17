@@ -61,8 +61,15 @@ lspconfig.cssls.setup{capabilities=capabilities}
 lspconfig.vuels.setup{capabilities=capabilities}
 lspconfig.gopls.setup{capabilities=capabilities}
 lspconfig.golangci_lint_ls.setup{
+
   init_options = {
-    command = { 'golangci-lint', 'run', '-E', 'goimports', 'dupl', 'goconst', 'gomnd', '--out-format', 'json' },
+    command = {
+     'golangci-lint', 'run',
+     '-E', 'deadcode', '-E', 'errcheck', '-E', 'gosimple', '-E', 'govet',
+     '-E', 'ineffassign', '-E', 'staticcheck', '-E', 'structcheck',
+     '-E', 'typecheck', '-E', 'unused', '-E', 'varcheck',
+     '--out-format', 'json'
+    },
   },
   capabilities=capabilities
 }
@@ -91,4 +98,5 @@ lspconfig.sumneko_lua.setup{
       }
   }
 }
+
 
