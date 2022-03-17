@@ -61,7 +61,6 @@ lspconfig.cssls.setup{capabilities=capabilities}
 lspconfig.vuels.setup{capabilities=capabilities}
 lspconfig.gopls.setup{capabilities=capabilities}
 lspconfig.golangci_lint_ls.setup{
-
   init_options = {
     command = {
      'golangci-lint', 'run',

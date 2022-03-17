@@ -29,6 +29,7 @@ require('packer').startup(function(use)
   use 'onsails/lspkind-nvim'
   use 'mfussenegger/nvim-jdtls'
   use 'github/copilot.vim'
+  use 'ray-x/go.nvim'
   -- use 'hrsh7th/vim-vsnip'
   -- use 'hrsh7th/vim-vsnip-integ'
   use {'prettier/vim-prettier', run = 'yarn install'}

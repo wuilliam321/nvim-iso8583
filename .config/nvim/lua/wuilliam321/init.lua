@@ -9,3 +9,6 @@ require"wuilliam321.icons"
 require"wuilliam321.compe"
 require"wuilliam321.comments"
 require"wuilliam321.treesitter-context"
+
+-- TODO: move this to a separate file
+require('go').setup()
