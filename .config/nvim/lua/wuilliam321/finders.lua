@@ -30,6 +30,45 @@ local with_preview = require'telescope.themes'.get_dropdown({
     smart = 1,
   }
 })
+custom_finders.actions_golang = function()
+  local _opts = vim.deepcopy(no_preview)
+  local results = {
+    {'GoFillStruct', 'Autofill struct'},
+    {'GoAddTag', 'Add struct tags'},
+    {'GoRmTag', 'Remove struct tags'},
+    {'GoClearTag', 'Clear struct tags'},
+    {'GoImport', 'Format file'},
+    {'GoTest', 'Run all tests'},
+    {'GoTestPkg', 'Run package tests'},
+    {'GoTestFile', 'Run file tests'},
+    {'GoTestFunc', 'Run current function tests'},
+  }
+  pickers.new(_opts, {
+    prompt_title = "Go Actions",
+    finder = finders.new_table {
+      results = results,
+      entry_maker = function(entry)
+        return {
+          value = entry,
+          ordinal = entry[2] .. " " .. entry[1],
+          cmd = entry[1],
+          display = entry[2],
+        }
+      end,
+    },
+    previewer = previewers.help.new(_opts),
+    sorter = conf.generic_sorter(_opts),
+    attach_mappings = function(prompt_bufnr)
+      action_set.select:replace(function()
+        local entry = action_state.get_selected_entry()
+        local command = entry.cmd
+        actions.close(prompt_bufnr)
+        vim.cmd([[silent! ]] .. command)
+      end)
+      return true
+    end,
+  }):find()
+end
 
 custom_finders.cheatsheets = function(opts)
   local _opts = vim.deepcopy(no_preview)
