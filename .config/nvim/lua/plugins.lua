@@ -20,6 +20,7 @@ require('packer').startup(function(use)
   use 'dbeniamine/cheat.sh-vim'
   -- code style / completion / helpers
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
