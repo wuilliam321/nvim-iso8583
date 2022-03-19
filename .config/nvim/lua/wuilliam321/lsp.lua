@@ -78,6 +78,7 @@ lspconfig.groovyls.setup{capabilities=capabilities}
 lspconfig.clangd.setup{capabilities=capabilities}
 lspconfig.dockerls.setup{capabilities=capabilities}
 lspconfig.yamlls.setup{capabilities=capabilities}
+lspconfig.terraformls.setup{capabilities=capabilities}
 lspconfig.tsserver.setup{
   root_dir = lspconfig.util.root_pattern("tsconfig.json", ".git"),
   capabilities=capabilities

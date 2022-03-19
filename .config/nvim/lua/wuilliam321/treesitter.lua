@@ -2,7 +2,7 @@ local treesitter = require('nvim-treesitter.configs')
 local enable = true
 
 treesitter.setup {
-  ensure_installed = {"go", "javascript", "typescript", "python", "vue", "bash", "lua", "css", "html", "json", "yaml", "tsx"},
+  ensure_installed = {"go", "javascript", "typescript", "python", "vue", "bash", "lua", "css", "html", "json", "yaml", "tsx", "hcl"},
   highlight = {
     enable = enable,
     -- disable = { "kotlin" },
@@ -24,8 +24,8 @@ treesitter.setup {
     lsp_interop = {
       enable = enable,
       peek_definition_code = {
-        ["DF"] = "@function.outer",
-        ["CF"] = "@class.outer"
+        ["dF"] = "@function.outer",
+        ["cF"] = "@class.outer"
       }
     },
     move = {
