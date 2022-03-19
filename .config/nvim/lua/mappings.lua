@@ -42,8 +42,8 @@ local mappings = {
   {"n", "<leader>dm", "<cmd>call vimspector#LaunchWithSettings( #{ configuration: 'method', Test: '^' . cfi#format('%s', '') . '$' } )<cr>", opts},
   {"n", "<leader>ds", "<cmd>VimspectorReset<cr>", opts},
   {"n", "<leader>bp", "<cmd>call vimspector#ToggleBreakpoint()<cr>", opts},
-  {"n", "<leader>n", "<cmd>call vimspector#StepOver()<cr>", opts},
-  {"n", "<leader>c", "<cmd>call vimspector#Continue()<cr>", opts},
+  {"n", "<leader>dn", "<cmd>call vimspector#StepOver()<cr>", opts},
+  {"n", "<leader>dc", "<cmd>call vimspector#Continue()<cr>", opts},
 
   -- harpoon
   {"n", "<leader>mb", "<cmd>lua require('harpoon.mark').add_file()<cr>", opts},
@@ -60,10 +60,10 @@ local mappings = {
   {"n", "<leader>te", "<cmd>lua require('harpoon.term').gotoTerminal(2)<cr>", opts},
   {"n", "<leader>to", "<cmd>lua require('harpoon.term').gotoTerminal(3)<cr>", opts},
   {"n", "<leader>ta", "<cmd>lua require('harpoon.term').gotoTerminal(4)<cr>", opts},
-  {"n", "<leader>cu", "<cmd>lua require('harpoon.term').sendCommand(1, 1)<cr>", opts},
-  {"n", "<leader>ce", "<cmd>lua require('harpoon.term').sendCommand(2, 2)<cr>", opts},
-  {"n", "<leader>co", "<cmd>lua require('harpoon.term').sendCommand(3, 3)<cr>", opts},
-  {"n", "<leader>ca", "<cmd>lua require('harpoon.term').sendCommand(4, 4)<cr>", opts},
+  -- {"n", "<u", "<cmd>lua require('harpoon.term').sendCommand(1, 1)<cr>", opts},
+  -- {"n", "<leader>ce", "<cmd>lua require('harpoon.term').sendCommand(2, 2)<cr>", opts},
+  -- {"n", "<leader>co", "<cmd>lua require('harpoon.term').sendCommand(3, 3)<cr>", opts},
+  -- {"n", "<leader>ca", "<cmd>lua require('harpoon.term').sendCommand(4, 4)<cr>", opts},
 
   -- code navigation
   {"n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts},
