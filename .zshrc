@@ -7,9 +7,10 @@ export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export GOBIN="$GOPATH/bin"
 export PATH="$HOME/w/j:$PATH"
-export GOPRIVATE="github.com/pedidosya"
-export GONOSUMDB="github.com/pedidosya/*,github.com/deliveryhero/*"
+export GOPRIVATE="github.com/deliveryhero/*"
+export GONOSUMDB="github.com/deliveryhero/*,github.com/pedidosya/*"
 
+export PATH="/usr/local/opt/lua@5.3/bin:$PATH"
 export PATH="$HOME/Downloads/jdt-language-server-latest/runtime:$PATH"
 
 export JDTLS_HOME=/Users/wuilliam.lacruz/Downloads/jdt-language-server-latest
@@ -130,3 +131,16 @@ compinit
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+export GITHUB_LOGIN="wlacruzpy"
+export GITHUB_TOKEN="$(cat ~/.github_token)"
+
+# AWS Google SSO
+
+# Set your google username
+export GOOGLE_USERNAME=wuilliam.lacruz@pedidosya.com
+export GOOGLE_IDP_ID=C00pn5t3o
+export GOOGLE_SP_ID=112173148568
+
+alias sso_vp-stg="aws-google-auth --role-arn arn:aws:iam::100566118830:role/sso/${SSO_ROLE:-sso-administrator} --duration 28800 --profile vp-stg --keyring"
+# alias sso_vp-tr="aws-google-auth --role-arn arn:aws:iam::352837743227:role/sso/${SSO_ROLE:-sso-administrator} --duration 28800 --profile vp-stg --keyring"
+# alias sso_vp-prd="aws-google-auth --role-arn arn:aws:iam::592360142934:role/sso/${SSO_ROLE:-sso-administrator} --duration 28800 --profile vp-prd --keyring"
