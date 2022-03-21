@@ -77,7 +77,7 @@ local mappings = {
   {"n", "gW", "<cmd>lua require('wuilliam321.finders').find_symbol()<cr>", opts},
   {"n", "[h", ":GitGutterPrevHunk<cr>zt", opts},
   {"n", "]h", ":GitGutterNextHunk<cr>zt", opts},
-  {"n", "[g", "<cmd>lua vim.diagnostic.goto_next()<cr>zz", opts},
+  {"n", "[g", "<cmd>lua vim.diagnostic.goto_prev()<cr>zz", opts},
   {"n", "]g", "<cmd>lua vim.diagnostic.goto_next()<cr>zz", opts},
   {"n", "<C-h>", ":cprev<cr>zt", opts},
   {"n", "<C-l>", ":cnext<cr>zt", opts},
@@ -97,11 +97,13 @@ local mappings = {
   -- Misc
   -- make Y behave more like C and D
   {"n", "Y", "y$", opts},
+  -- {"i", "<expr><C-k>", "BDG_GetDigraph()", opts},
   -- add more undo beakpoints
   {"i", ",", ",<c-g>u", opts},
   {"i", ".", ".<c-g>u", opts},
   {"i", "!", "!<c-g>u", opts},
   {"i", "?", "?<c-g>u", opts},
+  {"i", "<space>", "<space><c-g>u", opts}, -- This make abbreviations not to work
   -- esc map
   {"i", "<C-c>", "<esc>", opts},
   {"t", "<Esc>", "<C-\\><C-n>", opts},

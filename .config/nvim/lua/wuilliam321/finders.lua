@@ -5,6 +5,7 @@ local from_entry = require "telescope.from_entry"
 local finders = require "telescope.finders"
 local pickers = require "telescope.pickers"
 local previewers = require "telescope.previewers"
+local make_entry = require "telescope.make_entry"
 
 local conf = require("telescope.config").values
 
@@ -240,8 +241,43 @@ end
 
 custom_finders.lsp_implementations = function()
   local opts = vim.deepcopy(with_preview)
-  opts.prompt_title = 'Implementations'
-  require('telescope.builtin').lsp_implementations(opts)
+  local params = vim.lsp.util.make_position_params()
+
+  vim.lsp.buf_request(0, "textDocument/implementation", params, function(err, result, ctx, config)
+    local bufnr = ctx.bufnr
+    local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+    local new_result
+
+    -- In go code, I do not like to see any mocks for impls
+    if ft == "go" then
+      new_result = vim.tbl_filter(function(v)
+        return not string.find(v.uri, "mock")
+      end, result)
+    end
+
+    if #new_result > 1 then
+      local flattened_results = {}
+      if result then
+        vim.list_extend(flattened_results, result)
+      end
+
+      local offset_encoding = vim.lsp.get_client_by_id(ctx.client_id).offset_encoding
+      local locations = vim.lsp.util.locations_to_items(flattened_results, offset_encoding)
+      pickers.new(opts, {
+        prompt_title = 'Implementations',
+        finder = finders.new_table {
+          results = locations,
+          entry_maker = opts.entry_maker or make_entry.gen_from_quickfix(opts),
+        },
+        previewer = conf.qflist_previewer(opts),
+        sorter = conf.generic_sorter(opts),
+      }):find()
+    elseif #new_result == 1 then
+      result = new_result
+      vim.lsp.handlers["textDocument/implementation"](err, result, ctx, config)
+      vim.cmd [[normal! zz]]
+    end
+  end)
 end
 
 custom_finders.lsp_type_definitions = function()
