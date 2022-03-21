@@ -287,9 +287,52 @@ custom_finders.lsp_type_definitions = function()
 end
 
 custom_finders.lsp_references = function()
-  local opts = vim.deepcopy(with_preview)
-  opts.prompt_title = 'References'
-  require('telescope.builtin').lsp_references(opts)
+  local lnum = vim.api.nvim_win_get_cursor(0)[1]
+  local params = vim.lsp.util.make_position_params()
+  params.context = { includeDeclaration = true }
+
+  vim.lsp.buf_request(0, "textDocument/references", params, function(err, result, ctx, config)
+    if not result then
+      return
+    end
+
+    -- without current line reference
+    local filtered_results = {}
+    filtered_results = vim.tbl_filter(function(v)
+      return lnum ~= v.range.start.line + 1
+    end, result)
+
+    if vim.tbl_isempty(filtered_results) then
+      return
+    end
+
+    if err then
+      vim.api.nvim_err_writeln("Error when finding references: " .. err.message)
+      return
+    end
+
+    local locations = vim.lsp.util.locations_to_items(filtered_results, vim.lsp.get_client_by_id(ctx.client_id).offset_encoding)
+
+    if #locations == 1 then
+      vim.lsp.handlers["textDocument/references"](err, filtered_results, ctx, config)
+      vim.schedule(function()
+        vim.cmd [[cfirst]]
+        vim.cmd [[cclose]]
+        vim.cmd [[normal! zz]]
+      end)
+    else
+      local opts = vim.deepcopy(with_preview)
+      pickers.new(opts, {
+        prompt_title = "LSP References",
+        finder = finders.new_table {
+          results = locations,
+          entry_maker = opts.entry_maker or make_entry.gen_from_quickfix(opts),
+        },
+        previewer = conf.qflist_previewer(opts),
+        sorter = conf.generic_sorter(opts),
+      }):find()
+    end
+  end)
 end
 
 return custom_finders
