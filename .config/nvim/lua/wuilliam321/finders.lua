@@ -75,6 +75,9 @@ custom_finders.cheatsheets = function(opts)
   local _opts = vim.deepcopy(no_preview)
   _opts.filetype = opts.filetype
   _opts.search = vim.fn.input("cht.sh > ")
+  if _opts.search == "" then
+    return
+  end
 
   local languages = {
     { "go", {filetype = "go", name = "Golang"}},
@@ -174,7 +177,10 @@ end
 
 custom_finders.project_grep = function()
   local opts = vim.deepcopy(with_preview)
-  opts.search = vim.fn.input("Grep For > ")
+  opts.search = vim.fn.input("Grep For > ", "")
+  if opts.search == "" then
+    return
+  end
   require'telescope.builtin'.grep_string(opts)
 end
 
@@ -244,6 +250,10 @@ custom_finders.lsp_implementations = function()
   local params = vim.lsp.util.make_position_params()
 
   vim.lsp.buf_request(0, "textDocument/implementation", params, function(err, result, ctx, config)
+    if not result then
+      return
+    end
+
     local bufnr = ctx.bufnr
     local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
     local new_result
@@ -299,7 +309,9 @@ custom_finders.lsp_references = function()
     -- without current line reference
     local filtered_results = {}
     filtered_results = vim.tbl_filter(function(v)
-      return lnum ~= v.range.start.line + 1
+      local aux = v.range.start.line
+      return lnum ~= aux + 1
+      -- return true
     end, result)
 
     if vim.tbl_isempty(filtered_results) then

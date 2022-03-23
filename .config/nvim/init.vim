@@ -24,6 +24,8 @@ syntax on
 
 endif
 
+inoremap <expr>  <C-k>   BDG_GetDigraph()
+
 if exists('g:vscode')
 xmap                          gc  <Plug>VSCodeCommentary
 nmap                          gc  <Plug>VSCodeCommentary

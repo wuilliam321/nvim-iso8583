@@ -14,3 +14,5 @@
 ;   cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|staging' | xargs -n 1 git branch -d"
 [core]
 	editor = nvim
+[url "https://"]
+	insteadOf = git://

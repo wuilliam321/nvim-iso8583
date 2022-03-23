@@ -106,6 +106,7 @@ local mappings = {
   {"i", "<space>", "<space><c-g>u", opts}, -- This make abbreviations not to work
   -- esc map
   {"i", "<C-c>", "<esc>", opts},
+  -- {"c", "<C-c>", "<esc>", opts},
   {"t", "<Esc>", "<C-\\><C-n>", opts},
   -- x escapes visual mode
   {"x", "x", "<Esc>", opts},

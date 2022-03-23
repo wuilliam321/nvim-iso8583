@@ -96,6 +96,14 @@ require("harpoon").setup({
                 }
             }
         },
+        ["~/go/src/github.com/deliveryhero/dh-vt-kratos/go-services/vendor-onboarding"] = {
+            term = {
+                cmds = {
+                    "make test\n",
+                    "make web\n"
+                }
+            }
+        },
     }
 })
 

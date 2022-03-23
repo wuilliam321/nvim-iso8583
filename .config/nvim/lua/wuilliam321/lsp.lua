@@ -28,7 +28,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -59,7 +60,14 @@ lspconfig.kotlin_language_server.setup{
 lspconfig.html.setup{capabilities=capabilities}
 lspconfig.cssls.setup{capabilities=capabilities}
 lspconfig.vuels.setup{capabilities=capabilities}
-lspconfig.gopls.setup{capabilities=capabilities}
+lspconfig.gopls.setup{
+  settings = { gopls =  {
+    codelenses = { gc_details = true },
+    usePlaceholders = true,
+    buildFlags =  {"-tags=integration"}
+  }},
+  capabilities=capabilities,
+}
 lspconfig.golangci_lint_ls.setup{
   init_options = {
     command = {
