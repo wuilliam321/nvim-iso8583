@@ -100,7 +100,8 @@ require("harpoon").setup({
             term = {
                 cmds = {
                     "make test\n",
-                    "make web\n"
+                    "make web\n",
+                    "make integration\n",
                 }
             }
         },

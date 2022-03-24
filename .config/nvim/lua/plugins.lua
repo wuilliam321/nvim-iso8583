@@ -43,4 +43,5 @@ require('packer').startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'folke/todo-comments.nvim'
   use 'kristijanhusak/vim-carbon-now-sh'
+  use 'tyru/current-func-info.vim'
 end)
