@@ -9,9 +9,6 @@ local make_entry = require "telescope.make_entry"
 
 local conf = require("telescope.config").values
 
--- in lua/finders.lua
-local custom_finders = {}
-
 -- Dropdown list theme using a builtin theme definitions :
 local no_preview = require'telescope.themes'.get_dropdown({
   winblend = 10,
@@ -31,7 +28,11 @@ local with_preview = require'telescope.themes'.get_dropdown({
     smart = 1,
   }
 })
-custom_finders.actions_golang = function()
+
+-- in lua/finders.lua
+local M = {}
+
+M.actions_golang = function()
   local _opts = vim.deepcopy(no_preview)
   local results = {
     {'GoFillStruct', 'Autofill struct'},
@@ -71,7 +72,7 @@ custom_finders.actions_golang = function()
   }):find()
 end
 
-custom_finders.cheatsheets = function(opts)
+M.cheatsheets = function(opts)
   local _opts = vim.deepcopy(no_preview)
   _opts.filetype = opts.filetype
   _opts.search = vim.fn.input("cht.sh > ")
@@ -141,7 +142,7 @@ custom_finders.cheatsheets = function(opts)
   end
 end
 
-custom_finders.projects = function()
+M.projects = function()
   local opts = vim.deepcopy(no_preview)
   opts.search_dirs = {
     -- '~/w',
@@ -157,7 +158,7 @@ custom_finders.projects = function()
       local dir = from_entry.path(entry)
       vim.fn.execute("cd " .. dir, "silent")
       vim.schedule(function()
-        custom_finders.git_files()
+        M.git_files()
       end)
     end)
     return true
@@ -165,17 +166,17 @@ custom_finders.projects = function()
   require'telescope.builtin'.find_files(opts)
 end
 
-custom_finders.git_files = function()
+M.git_files = function()
   local opts = vim.deepcopy(no_preview)
   require'telescope.builtin'.git_files(opts)
 end
 
-custom_finders.project_find = function()
+M.project_find = function()
   local opts = vim.deepcopy(no_preview)
   require'telescope.builtin'.find_files(opts)
 end
 
-custom_finders.project_grep = function()
+M.project_grep = function()
   local opts = vim.deepcopy(with_preview)
   opts.search = vim.fn.input("Grep For > ", "")
   if opts.search == "" then
@@ -184,54 +185,54 @@ custom_finders.project_grep = function()
   require'telescope.builtin'.grep_string(opts)
 end
 
-custom_finders.project_live_grep = function()
+M.project_live_grep = function()
   local opts = vim.deepcopy(with_preview)
   require'telescope.builtin'.live_grep(opts)
 end
 
-custom_finders.buffers = function()
+M.buffers = function()
   local opts = vim.deepcopy(no_preview)
   require'telescope.builtin'.buffers(opts)
 end
 
-custom_finders.buffer_find = function()
+M.buffer_find = function()
   local opts = vim.deepcopy(no_preview)
   require'telescope.builtin'.current_buffer_fuzzy_find(opts)
 end
 
-custom_finders.command_history = function()
+M.command_history = function()
   local opts = vim.deepcopy(no_preview)
   require'telescope.builtin'.command_history(opts)
 end
 
-custom_finders.project_word = function()
+M.project_word = function()
   local opts = vim.deepcopy(with_preview)
   opts.search = vim.fn.expand("<cword>")
   require'telescope.builtin'.grep_string(opts)
 end
 
-custom_finders.find_symbol = function ()
+M.find_symbol = function ()
   local opts = vim.deepcopy(with_preview)
   opts.query = vim.fn.expand("<cword>")
   require'telescope.builtin'.lsp_workspace_symbols(opts)
 end
 
-custom_finders.quickfix = function()
+M.quickfix = function()
   local opts = vim.deepcopy(with_preview)
   require'telescope.builtin'.quickfix(opts)
 end
 
-custom_finders.help_tags = function()
+M.help_tags = function()
   local opts = vim.deepcopy(no_preview)
   require'telescope.builtin'.help_tags(opts)
 end
 
-custom_finders.keymaps = function()
+M.keymaps = function()
   local opts = vim.deepcopy(no_preview)
   require'telescope.builtin'.keymaps(opts)
 end
 
-custom_finders.buffer_diagnostics = function()
+M.buffer_diagnostics = function()
   local opts = vim.deepcopy(no_preview)
   opts.prompt_title = 'Diagnostics'
   vim.lsp.diagnostic.set_loclist()
@@ -239,13 +240,13 @@ custom_finders.buffer_diagnostics = function()
   require('telescope.builtin').loclist(opts)
 end
 
-custom_finders.lsp_definitions = function()
+M.lsp_definitions = function()
   local opts = vim.deepcopy(with_preview)
   opts.prompt_title = 'Definitions/Declarations'
   require('telescope.builtin').lsp_definitions(opts)
 end
 
-custom_finders.lsp_implementations = function()
+M.lsp_implementations = function()
   local opts = vim.deepcopy(with_preview)
   local params = vim.lsp.util.make_position_params()
 
@@ -290,13 +291,13 @@ custom_finders.lsp_implementations = function()
   end)
 end
 
-custom_finders.lsp_type_definitions = function()
+M.lsp_type_definitions = function()
   local opts = vim.deepcopy(with_preview)
   opts.prompt_title = 'Type Definitions'
   require('telescope.builtin').lsp_type_definitions(opts)
 end
 
-custom_finders.lsp_references = function()
+M.lsp_references = function()
   local lnum = vim.api.nvim_win_get_cursor(0)[1]
   local params = vim.lsp.util.make_position_params()
   params.context = { includeDeclaration = true }
@@ -347,4 +348,4 @@ custom_finders.lsp_references = function()
   end)
 end
 
-return custom_finders
+return M
