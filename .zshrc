@@ -134,13 +134,19 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export GITHUB_LOGIN="wlacruzpy"
 export GITHUB_TOKEN="$(cat ~/.github_token)"
 
-# AWS Google SSO
+# export CONN_STR="postgres://test:test@localhost:21432/test_test?sslmode=disable"
 
-# Set your google username
-export GOOGLE_USERNAME=wuilliam.lacruz@pedidosya.com
-export GOOGLE_IDP_ID=C00pn5t3o
-export GOOGLE_SP_ID=112173148568
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias sso_vp-stg="aws-google-auth --role-arn arn:aws:iam::100566118830:role/sso/${SSO_ROLE:-sso-administrator} --duration 28800 --profile vp-stg --keyring"
-# alias sso_vp-tr="aws-google-auth --role-arn arn:aws:iam::352837743227:role/sso/${SSO_ROLE:-sso-administrator} --duration 28800 --profile vp-stg --keyring"
-# alias sso_vp-prd="aws-google-auth --role-arn arn:aws:iam::592360142934:role/sso/${SSO_ROLE:-sso-administrator} --duration 28800 --profile vp-prd --keyring"
+# fd - cd to selected directory
+f() {
+  local dir
+  dir=$(fd --type d --hidden --follow --exclude .git > /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
+nn() {
+  local file
+  file=$(fd --type f --hidden --follow --exclude .git > /dev/null | fzf +m) &&
+  nvim "$file"
+}
