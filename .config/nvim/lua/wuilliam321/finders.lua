@@ -4,7 +4,6 @@ local actions = require "telescope.actions"
 local from_entry = require "telescope.from_entry"
 local finders = require "telescope.finders"
 local pickers = require "telescope.pickers"
-local previewers = require "telescope.previewers"
 local make_entry = require "telescope.make_entry"
 
 local conf = require("telescope.config").values
@@ -35,15 +34,15 @@ local M = {}
 M.actions_golang = function()
   local _opts = vim.deepcopy(no_preview)
   local results = {
-    {'GoFillStruct', 'Autofill struct'},
-    {'GoAddTag', 'Add struct tags'},
-    {'GoRmTag', 'Remove struct tags'},
-    {'GoClearTag', 'Clear struct tags'},
-    {'GoImport', 'Format file'},
-    {'GoTest', 'Run all tests'},
-    {'GoTestPkg', 'Run package tests'},
-    {'GoTestFile', 'Run file tests'},
-    {'GoTestFunc', 'Run current function tests'},
+    {cmd = 'GoFillStruct', name = 'Autofill struct'},
+    {cmd = 'GoAddTag', name = 'Add struct tags'},
+    {cmd = 'GoRmTag', name = 'Remove struct tags'},
+    {cmd = 'GoClearTag', name = 'Clear struct tags'},
+    {cmd = 'GoImport', name = 'Format file'},
+    {cmd = 'GoTest', name = 'Run all tests'},
+    {cmd = 'GoTestPkg', name = 'Run package tests'},
+    {cmd = 'GoTestFile', name = 'Run file tests'},
+    {cmd = 'GoTestFunc', name = 'Run current function tests'},
   }
   pickers.new(_opts, {
     prompt_title = "Go Actions",
@@ -52,14 +51,12 @@ M.actions_golang = function()
       entry_maker = function(entry)
         return {
           value = entry,
-          ordinal = entry[2] .. " " .. entry[1],
-          cmd = entry[1],
-          display = entry[2],
+          display = entry.name .. " (" .. entry.cmd .. ")",
+          ordinal = entry.name,
+          cmd = entry.cmd,
         }
       end,
     },
-    previewer = previewers.help.new(_opts),
-    sorter = conf.generic_sorter(_opts),
     attach_mappings = function(prompt_bufnr)
       action_set.select:replace(function()
         local entry = action_state.get_selected_entry()
@@ -74,7 +71,7 @@ end
 
 M.cheatsheets = function(opts)
   local _opts = vim.deepcopy(no_preview)
-  _opts.search = vim.fn.input("cht.sh > ")
+  _opts.search = vim.fn.input("cht.sh query > ")
   _opts.prompt_title = "Available languages (Cheat.sh)"
 
   if _opts.search == "" then
@@ -85,14 +82,10 @@ M.cheatsheets = function(opts)
     {filetype = "go", name = "Golang"},
     {filetype = "js", name = "Javascript"},
     {filetype = "markdown", name = "Markdown"},
-    -- "typescript", {filetype = "ts", name = "TypeScript"}},
-    -- "typescriptreact", {filetype = "tsx", name = "TypeScript React"}},
-    -- "json", {filetype = "json", name = "JSON"}},
-    -- "python", {filetype = "python", name = "Python"}},
-    -- "ruby", {filetype = "ruby", name = "Ruby"}},
-    -- "shell", {filetype = "shell", name = "Shell"}},
-    -- "yaml", {filetype = "yaml", name = "YAML"}},
-    -- "xml", {filetype = "xml", name = "XML"}},
+    {filetype = "json", name = "JSON"},
+    {filetype = "yaml", name = "YAML"},
+    {filetype = "ts", name = "TypeScript"},
+    {filetype = "tsx", name = "TypeScript React"},
     {filetype = "lua", name = "Lua"},
   }
 
