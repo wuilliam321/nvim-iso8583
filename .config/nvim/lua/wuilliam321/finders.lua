@@ -74,61 +74,56 @@ end
 
 M.cheatsheets = function(opts)
   local _opts = vim.deepcopy(no_preview)
-  _opts.filetype = opts.filetype
   _opts.search = vim.fn.input("cht.sh > ")
+  _opts.prompt_title = "Available languages (Cheat.sh)"
+
   if _opts.search == "" then
     return
   end
 
   local languages = {
-    { "go", {filetype = "go", name = "Golang"}},
-    { "javascript", {filetype = "js", name = "Javascript"}},
-    { "markdown", {filetype = "markdown", name = "Markdown"}},
-    -- { "typescript", {filetype = "ts", name = "TypeScript"}},
-    -- { "typescriptreact", {filetype = "tsx", name = "TypeScript React"}},
-    -- { "json", {filetype = "json", name = "JSON"}},
-    -- { "python", {filetype = "python", name = "Python"}},
-    -- { "ruby", {filetype = "ruby", name = "Ruby"}},
-    -- { "shell", {filetype = "shell", name = "Shell"}},
-    -- { "yaml", {filetype = "yaml", name = "YAML"}},
-    -- { "xml", {filetype = "xml", name = "XML"}},
-    { "lua", {filetype = "lua", name = "Lua"}},
+    {filetype = "go", name = "Golang"},
+    {filetype = "js", name = "Javascript"},
+    {filetype = "markdown", name = "Markdown"},
+    -- "typescript", {filetype = "ts", name = "TypeScript"}},
+    -- "typescriptreact", {filetype = "tsx", name = "TypeScript React"}},
+    -- "json", {filetype = "json", name = "JSON"}},
+    -- "python", {filetype = "python", name = "Python"}},
+    -- "ruby", {filetype = "ruby", name = "Ruby"}},
+    -- "shell", {filetype = "shell", name = "Shell"}},
+    -- "yaml", {filetype = "yaml", name = "YAML"}},
+    -- "xml", {filetype = "xml", name = "XML"}},
+    {filetype = "lua", name = "Lua"},
   }
 
-  local ft = _opts.filetype
-  local query = _opts.search
-  query = query:gsub(" ", "+")
-
-  local display_langs = {}
-  local current_lang = ""
-  for idx = 1, #languages do
-    local lang = languages[idx]
-    table.insert(display_langs, lang[2])
-    if lang[1] == ft then
-      current_lang = lang[2]
+  local curr_lang
+  local buff_filetype = opts.filetype
+  for _, lang in ipairs(languages) do
+    if lang.filetype == buff_filetype then
+      curr_lang = lang
     end
   end
 
-  if current_lang ~= '' then
-    local command = [[/]] .. current_lang.filetype .. [[/]] .. query
+  local query = _opts.search
+  query = query:gsub(" ", "+")
+
+  if curr_lang ~= nil then
+    local command = [[/]] .. curr_lang.filetype .. [[/]] .. query
     vim.cmd([[silent! Cheat ]] .. command)
   else
     pickers.new(_opts, {
-      prompt_title = "Cheat.sh",
       finder = finders.new_table {
-        results = display_langs,
+        results = languages,
         entry_maker = function(entry)
           return {
             value = entry.filetype,
-            display = entry.name,
+            display = entry.name .. " (" .. entry.filetype .. ")",
             ordinal = entry.name,
             filename = entry.name,
             cmd = entry.filetype,
           }
         end,
       },
-      previewer = previewers.help.new(_opts),
-      sorter = conf.generic_sorter(_opts),
       attach_mappings = function(prompt_bufnr)
           action_set.select:replace(function()
             local entry = action_state.get_selected_entry()
@@ -150,6 +145,7 @@ M.projects = function()
     '~/go/src/github.com/deliveryhero',
     '~/go/src/github.com/pedidosya',
   }
+  opts.prompt_title = "Projects"
   opts.find_command = { "fd", "--type", "d", "-d", "1" }
   opts.attach_mappings = function(prompt_bufnr)
     action_set.select:replace(function()
@@ -168,11 +164,13 @@ end
 
 M.git_files = function()
   local opts = vim.deepcopy(no_preview)
+  opts.prompt_title = "Git Files (workspace)"
   require'telescope.builtin'.git_files(opts)
 end
 
 M.project_find = function()
   local opts = vim.deepcopy(no_preview)
+  opts.prompt_title = "Project Find (cwd)"
   require'telescope.builtin'.find_files(opts)
 end
 
@@ -196,7 +194,8 @@ M.buffers = function()
 end
 
 M.buffer_find = function()
-  local opts = vim.deepcopy(no_preview)
+  local opts = vim.deepcopy(with_preview)
+  opts.prompt_title = "Find in (" .. vim.fn.expand('%:t') ..")"
   require'telescope.builtin'.current_buffer_fuzzy_find(opts)
 end
 
@@ -227,22 +226,16 @@ M.help_tags = function()
   require'telescope.builtin'.help_tags(opts)
 end
 
-M.keymaps = function()
-  local opts = vim.deepcopy(no_preview)
-  require'telescope.builtin'.keymaps(opts)
-end
-
 M.buffer_diagnostics = function()
   local opts = vim.deepcopy(no_preview)
+  opts.layout_config = { width = 0.9  }
   opts.prompt_title = 'Diagnostics'
   vim.lsp.diagnostic.set_loclist()
-  vim.cmd [[lclose]]
   require('telescope.builtin').loclist(opts)
 end
 
 M.lsp_definitions = function()
   local opts = vim.deepcopy(with_preview)
-  opts.prompt_title = 'Definitions/Declarations'
   require('telescope.builtin').lsp_definitions(opts)
 end
 

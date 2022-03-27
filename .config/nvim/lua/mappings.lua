@@ -83,6 +83,7 @@ local mappings = {
   {"n", "<C-l>", ":cnext<cr>zt", opts},
   {"n", "<leader>pw", "<cmd>lua require('wuilliam321.finders').project_word()<cr>", opts},
   {"n", "<leader>td", "<cmd>:vsplit<cr><cmd>:e ~/dotfiles/notes.md<cr>", opts},
+  {"n", "<leader>qf", "<cmd>lua require('wuilliam321.finders').quickfix()<cr>", opts},
 
   -- Git
   {"n", "<leader>gs", ":G<cr>", opts},
