@@ -208,11 +208,10 @@ M.help_tags = function()
 end
 
 M.buffer_diagnostics = function()
-  local opts = vim.deepcopy(no_preview)
+  local opts = vim.deepcopy(with_preview)
   opts.layout_config = {width = 0.9}
   opts.prompt_title = 'Diagnostics'
-  vim.lsp.diagnostic.set_loclist()
-  require'telescope.builtin'.loclist(opts)
+  require'telescope.builtin'.diagnostics(opts)
 end
 
 M.lsp_definitions = function()

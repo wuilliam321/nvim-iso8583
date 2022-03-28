@@ -28,8 +28,6 @@ require'packer'.startup(function(use)
   use'hrsh7th/nvim-cmp'
   use'lukas-reineke/lsp-format.nvim'
   use'andrejlevkovitch/vim-lua-format'
-  -- use 'hrsh7th/vim-vsnip'
-  -- use 'hrsh7th/vim-vsnip-integ'
   use'L3MON4D3/LuaSnip'
   use'saadparwaiz1/cmp_luasnip' -- required for LuaSnip
   use'onsails/lspkind-nvim'

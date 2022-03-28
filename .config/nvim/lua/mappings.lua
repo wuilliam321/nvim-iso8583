@@ -67,8 +67,8 @@ local mappings = {
   {'n', '<leader>-', ':vertical resize -5<cr>', opts},
   {'n', '<c-w>a', ':CloseOthers<cr>', opts},
   -- center on next/prev
-  {'n', 'n', 'nztzv', opts},
-  {'n', 'N', 'Nztzv', opts},
+  {'n', 'n', 'nzzzv', opts},
+  {'n', 'N', 'Nzzzv', opts},
 
   -- code actions
   {'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts},

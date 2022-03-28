@@ -37,7 +37,13 @@ require'harpoon'.setup({
       term = {cmds = {'make test\n', 'make web\n'}},
     },
     ['~/go/src/github.com/deliveryhero/dh-vt-kratos/go-services/vendor-onboarding'] = {
-      term = {cmds = {'make test\n', 'make web\n', 'make integration\n'}},
+      term = {
+        cmds = {
+          'clear && make test\n',
+          'clear && make web\n',
+          'clear && make integration\n',
+        },
+      },
     },
   },
 })
