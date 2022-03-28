@@ -11,7 +11,9 @@ function! s:WAutocmds()
       autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
       autocmd FileType gitcommit setlocal spell
       autocmd FileType gitcommit setlocal complete+=kspell
-      autocmd FileType go autocmd! BufWritePre <buffer> GoImport
+      " autocmd BufWrite *.lua call LuaFormat()
+      autocmd FileType lua autocmd! BufWritePre <buffer> call LuaFormat()
+      " autocmd FileType go autocmd! BufWritePre <buffer> GoImport
       " autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
       " autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()
   augroup END
