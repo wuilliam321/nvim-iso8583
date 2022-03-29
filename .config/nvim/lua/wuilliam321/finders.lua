@@ -157,6 +157,12 @@ M.project_find = function()
   require'telescope.builtin'.find_files(opts)
 end
 
+M.file_browser = function()
+  local opts = vim.deepcopy(with_preview)
+  opts.prompt_title = 'File Browser'
+  require'telescope'.extensions.file_browser.file_browser(opts)
+end
+
 M.project_grep = function()
   local opts = vim.deepcopy(with_preview)
   opts.search = vim.fn.input('Grep For > ', '')

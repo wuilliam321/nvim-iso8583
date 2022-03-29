@@ -33,6 +33,9 @@ require'harpoon'.setup({
     ['~/go/src/github.com/pedidosya/schedule-management-service'] = {
       term = {cmds = {'make test\n', 'make web\n'}},
     },
+    ['~/p/apdexone/apdexone-k6'] = {
+      term = {cmds = {'clear && ./run.sh\n', 'clear && ./run.sh\n'}},
+    },
     ['~/go/src/github.com/pedidosya/opening-times-adapter-service'] = {
       term = {cmds = {'make test\n', 'make web\n'}},
     },

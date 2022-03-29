@@ -32,7 +32,12 @@ local mappings = {
     '<cmd>lua require("wuilliam321.finders").buffers()<cr>',
     opts,
   },
-  {'n', '<leader>ff', ':Vex<cr>', opts},
+  {
+    'n',
+    '<leader>ff',
+    '<cmd>lua require("wuilliam321.finders").file_browser()<cr>',
+    opts,
+  },
   {
     'n',
     '<leader>ph',

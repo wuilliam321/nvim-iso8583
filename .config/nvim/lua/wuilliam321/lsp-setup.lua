@@ -25,7 +25,7 @@ local language_servers = {
   gopls = {
     settings = {
       gopls = {
-        codelenses = {gc_details = true},
+        codelenses = {gc_details = false},
         usePlaceholders = true,
         buildFlags = {'-tags=integration'},
       },
@@ -100,7 +100,29 @@ local capabilities = (function()
   return c
 end)()
 
-local on_attach = function(client, bufnr) lspformat.on_attach(client, bufnr) end
+local on_attach = function(client, bufnr)
+  if client.resolved_capabilities.document_highlight then
+    vim.cmd[[
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]]
+  end
+
+  if client.resolved_capabilities.code_lens then
+    vim.cmd[[
+      augroup lsp_document_codelens
+        au! * <buffer>
+        autocmd BufEnter ++once         <buffer> lua require"vim.lsp.codelens".refresh()
+        autocmd BufWritePost,CursorHold <buffer> lua require"vim.lsp.codelens".refresh()
+      augroup END
+    ]]
+  end
+
+  lspformat.on_attach(client, bufnr)
+end
 
 for idx, cfg in pairs(language_servers) do
   local lang = cfg
