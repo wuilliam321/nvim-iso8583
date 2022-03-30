@@ -160,6 +160,8 @@ end
 M.file_browser = function()
   local opts = vim.deepcopy(with_preview)
   opts.prompt_title = 'File Browser'
+  opts.path = '%:p:h'
+  opts.hidden = true
   require'telescope'.extensions.file_browser.file_browser(opts)
 end
 

@@ -13,7 +13,14 @@ require'telescope'.setup{
       '--no-ignore',
     },
     color_devicons = true,
-    file_ignore_patterns = {'vendor/.*', 'swagger/.*', 'build/.*'},
+    file_ignore_patterns = {
+      '.git/.*',
+      'dist/.*',
+      'node_modules/.*',
+      'vendor/.*',
+      'swagger/.*',
+      'build/.*',
+    },
     -- file_ignore_patterns = { "vendor/.*", "swagger/.*" , "build/.*" },
 
     file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
