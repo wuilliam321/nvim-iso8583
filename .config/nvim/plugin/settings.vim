@@ -30,7 +30,7 @@ set cursorline
 set cursorcolumn
 set clipboard=unnamedplus
 set inccommand=nosplit
-set signcolumn=yes
+set signcolumn=auto
 set colorcolumn=80
 set spelllang=es,en
 set completeopt=menu,menuone,noselect
