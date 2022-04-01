@@ -233,6 +233,7 @@ local mappings = {
   -- Misc
   -- make Y behave more like C and D
   {'n', 'Y', 'y$', opts},
+  {'o', 'ao', ':normal! v$%<cr>', opts},
   -- {"i", "<expr><C-k>", "BDG_GetDigraph()", opts},
   -- add more undo beakpoints
   {'i', ',', ',<c-g>u', opts},
