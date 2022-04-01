@@ -16,6 +16,7 @@ function! s:WAutocmds()
       " autocmd FileType go autocmd! BufWritePre <buffer> GoImport
       " autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
       " autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()
+      au FileType * if !(&ft == "") | setlocal signcolumn=yes | endif
   augroup END
 endfunction
 
