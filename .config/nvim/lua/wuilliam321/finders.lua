@@ -13,7 +13,8 @@ local no_preview = require'telescope.themes'.get_dropdown({
   winblend = 10,
   prompt = ' > ',
   previewer = false,
-  path_display = {smart = 1},
+  path_display = {truncate = 1},
+  layout_config = {width = 180},
 })
 
 -- Settings for with preview option
@@ -21,7 +22,8 @@ local with_preview = require'telescope.themes'.get_dropdown({
   winblend = 10,
   prompt = ' > ',
   results_title = false,
-  path_display = {smart = 1},
+  path_display = {truncate = 1},
+  layout_config = {width = 180},
 })
 
 -- in lua/finders.lua
@@ -127,8 +129,8 @@ M.projects = function()
   opts.search_dirs = {
     -- '~/w',
     '~/dh',
-    '~/go/src/github.com/deliveryhero',
-    '~/go/src/github.com/pedidosya',
+    -- '~/go/src/github.com/deliveryhero',
+    -- '~/go/src/github.com/pedidosya',
   }
   opts.prompt_title = 'Projects'
   opts.find_command = {'fd', '--type', 'd', '-d', '1'}
