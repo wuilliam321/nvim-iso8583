@@ -40,6 +40,10 @@ require'packer'.startup(function(use)
   use'ray-x/go.nvim'
   use{'prettier/vim-prettier', run = 'yarn install'}
   use'mechatroner/rainbow_csv'
+  use{
+    'ThePrimeagen/refactoring.nvim',
+    requires = {{'nvim-lua/plenary.nvim'}, {'nvim-treesitter/nvim-treesitter'}},
+  }
   -- telescope/navigation
   use'nvim-lua/popup.nvim'
   use'nvim-lua/plenary.nvim'
