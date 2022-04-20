@@ -26,7 +26,6 @@ require'packer'.startup(function(use)
   use'hrsh7th/cmp-nvim-lsp'
   use'hrsh7th/cmp-buffer'
   use'hrsh7th/nvim-cmp'
-  use'lukas-reineke/lsp-format.nvim'
   use'andrejlevkovitch/vim-lua-format'
   use'L3MON4D3/LuaSnip'
   use'saadparwaiz1/cmp_luasnip' -- required for LuaSnip

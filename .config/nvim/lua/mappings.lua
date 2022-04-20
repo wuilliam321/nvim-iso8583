@@ -200,8 +200,6 @@ local mappings = {
     opts,
   },
   {'n', 'gW', '<cmd>lua require("wuilliam321.finders").find_symbol()<cr>', opts},
-  {'n', '[h', ':GitGutterPrevHunk<cr>zt', opts},
-  {'n', ']h', ':GitGutterNextHunk<cr>zt', opts},
   {'n', '[g', '<cmd>lua vim.diagnostic.goto_prev()<cr>zz', opts},
   {'n', ']g', '<cmd>lua vim.diagnostic.goto_next()<cr>zz', opts},
   {'n', '<C-h>', ':cprev<cr>zt', opts},

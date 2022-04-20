@@ -10,3 +10,11 @@ nnoremap <leader>mi <cmd>lua require("harpoon.term").sendCommand(1, 3)<CR><cmd>l
 nnoremap <leader>mw <cmd>lua require("harpoon.term").sendCommand(2, 2)<CR><cmd>lua require("harpoon.term").gotoTerminal(2)<cr>G
 nnoremap <leader>ga <cmd>lua require("wuilliam321.finders").actions_golang()<cr>
 
+function! s:GoAutocmds()
+  augroup WAutocmds
+      autocmd!
+      autocmd BufWritePre *.go :lua vim.lsp.buf.formatting()
+  augroup END
+endfunction
+
+call s:GoAutocmds()

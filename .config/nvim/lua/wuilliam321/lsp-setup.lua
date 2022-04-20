@@ -1,7 +1,4 @@
 local lspconfig = require'lspconfig'
-local lspformat = require'lsp-format'
-
-lspformat.setup{}
 
 local language_servers = {
   'html',
@@ -100,7 +97,7 @@ local capabilities = (function()
   return c
 end)()
 
-local on_attach = function(client, bufnr)
+local on_attach = function(client)
   if client.resolved_capabilities.document_highlight then
     vim.cmd[[
       augroup lsp_document_highlight
@@ -120,8 +117,6 @@ local on_attach = function(client, bufnr)
       augroup END
     ]]
   end
-
-  lspformat.on_attach(client, bufnr)
 end
 
 for idx, cfg in pairs(language_servers) do
