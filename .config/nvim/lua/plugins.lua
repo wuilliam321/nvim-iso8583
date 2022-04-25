@@ -63,4 +63,5 @@ require'packer'.startup(function(use)
   use'folke/todo-comments.nvim'
   use'kristijanhusak/vim-carbon-now-sh'
   use'tyru/current-func-info.vim'
+  use{'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end}
 end)
