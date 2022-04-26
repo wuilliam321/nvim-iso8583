@@ -46,9 +46,11 @@ require'telescope'.setup{
         },
       },
     },
+    ['ui-select'] = {require'wuilliam321.custom-themes'.no_preview},
   },
 }
 
 require'telescope'.load_extension('refactoring')
 require'telescope'.load_extension('fzf')
 require'telescope'.load_extension('file_browser')
+require('telescope').load_extension('ui-select')
