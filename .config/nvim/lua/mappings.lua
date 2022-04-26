@@ -77,10 +77,10 @@ local mappings = {
 
   -- code actions
   {'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts},
-  {'n', '<leader>a', ':Telescope lsp_range_code_actions<cr>', opts},
-  {'n', '<leader>ca', ':Telescope lsp_code_actions<cr>', opts},
-  {'v', '<leader>a', ':Telescope lsp_range_code_actions<cr>', opts},
-  {'v', '<leader>ca', ':Telescope lsp_code_actions<cr>', opts},
+  {'n', '<leader>a', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', opts},
+  {'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts},
+  {'v', '<leader>a', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', opts},
+  {'v', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts},
   {'n', '<leader>fd', '<cmd>lua vim.lsp.buf.formatting()<cr>', opts},
   {'v', '<leader>fd', '<cmd>lua vim.lsp.buf.range_formatting()<cr>', opts},
   {'n', '<leader>pd', '<cmd>PrettierAsync<cr>', opts},
