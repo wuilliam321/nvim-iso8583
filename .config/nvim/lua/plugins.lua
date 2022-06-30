@@ -35,7 +35,7 @@ require'packer'.startup(function(use)
     run = './install.sh',
     requires = 'hrsh7th/nvim-cmp',
   }
-  use'github/copilot.vim'
+  -- use'github/copilot.vim'
   use'ray-x/go.nvim'
   use{'prettier/vim-prettier', run = 'yarn install'}
   use'mechatroner/rainbow_csv'
@@ -65,4 +65,5 @@ require'packer'.startup(function(use)
   use'kristijanhusak/vim-carbon-now-sh'
   use'tyru/current-func-info.vim'
   use{'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end}
+  use{'tpope/vim-dadbod', requires = 'tpope/vim-dotenv'}
 end)

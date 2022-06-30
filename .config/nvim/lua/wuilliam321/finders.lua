@@ -66,6 +66,7 @@ M.cheatsheets = function(opts)
     {filetype = 'ts', name = 'TypeScript'},
     {filetype = 'tsx', name = 'TypeScript React'},
     {filetype = 'lua', name = 'Lua'},
+    {filetype = 'python', name = 'Python'},
   }
 
   local curr_lang

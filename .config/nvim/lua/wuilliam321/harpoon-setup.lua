@@ -48,5 +48,13 @@ require'harpoon'.setup({
         },
       },
     },
+    ['~/dh/dh-vp-email-service'] = {
+      term = {
+        cmds = {
+          'clear && docker-compose up -d\nAWS_REGION=us-west-1 yarn test\n',
+          'clear && AWS_PROFILE=vp-stg yarn start\n',
+        },
+      },
+    },
   },
 })
