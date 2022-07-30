@@ -1,4 +1,4 @@
-require'harpoon'.setup({
+require('harpoon').setup({
   projects = {
     ['~/w/partner-portal-web'] = {
       term = {cmds = {'npm run unit\n', 'nvm use 10.16.3 && npm run local\n'}},
@@ -42,7 +42,16 @@ require'harpoon'.setup({
     ['~/go/src/github.com/deliveryhero/dh-vt-kratos/go-services/vendor-onboarding'] = {
       term = {
         cmds = {
-          'clear && make test\n',
+          'clear && make test\nexit\n',
+          'clear && make web\n',
+          'clear && make integration\n',
+        },
+      },
+    },
+    ['~/go/src/github.com/deliveryhero/dh-vt-kratos/go-services/vp-plugin-service'] = {
+      term = {
+        cmds = {
+          'clear && make test\nexit\n',
           'clear && make web\n',
           'clear && make integration\n',
         },

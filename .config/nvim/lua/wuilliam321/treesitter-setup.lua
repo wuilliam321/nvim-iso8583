@@ -1,7 +1,7 @@
-local treesitter = require'nvim-treesitter.configs'
+local treesitter = require('nvim-treesitter.configs')
 local enable = true
 
-treesitter.setup{
+treesitter.setup({
   ensure_installed = {
     'go',
     'javascript',
@@ -75,4 +75,4 @@ treesitter.setup{
       swap_previous = {['[p'] = '@parameter.inner'},
     },
   },
-}
+})

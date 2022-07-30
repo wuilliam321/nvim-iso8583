@@ -2,6 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
+export EDITOR="nvim"
 export ZSH="/Users/wuilliam.lacruz/.oh-my-zsh"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
@@ -12,6 +13,7 @@ export GONOSUMDB="github.com/deliveryhero/*,github.com/pedidosya/*"
 
 export PATH="/usr/local/opt/lua@5.3/bin:$PATH"
 export PATH="$HOME/Downloads/jdt-language-server-latest/runtime:$PATH"
+export PATH="$HOME/Downloads/istio-1.13.2/bin:$PATH"
 
 export JDTLS_HOME=/Users/wuilliam.lacruz/Downloads/jdt-language-server-latest
 # Set name of the theme to load --- if set to "random", it will
@@ -78,7 +80,7 @@ ZSH_THEME="wezm"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git npm yarn node aws cp docker zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git npm yarn node aws cp docker kubectl zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,16 +115,15 @@ alias tunnel="/Users/wuilliam.lacruz/w/product-it-documentation/infrastructure/s
 alias ctags="`brew --prefix`/bin/ctags"
 alias td="nvim ~/dotfiles/notes.md"
 alias dot="cd ~/dotfiles; nvim"
+alias saml-stg="saml2aws login -a vp-stg && export AWS_PROFILE=vp-stg"
+alias saml-prd="saml2aws login -a vp-prd && export AWS_PROFILE=vp-prd"
+alias saml-op="saml2aws login -a vp-op && export AWS_PROFILE=vp-op"
+alias eks-eu01-stg="aws eks --region eu-west-1 update-kubeconfig --name eu01-stg --profile vp-stg"
+alias eks-eu01-prd="aws eks --region eu-west-1 update-kubeconfig --name eu01-prd --profile vp-prd"
+alias helm-update="cd ~/go/src/github.com/deliveryhero/dh-vt-kratos; helm package ./infrastructure/charts/apps/vendor-onboarding/. -d ./infrastructure/charts/apps/vendor-onboarding"
+alias vim="/usr/local/bin/nvim"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 eval "$(zoxide init zsh)"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/wuilliam.lacruz/.sdkman"
-[[ -s "/Users/wuilliam.lacruz/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/wuilliam.lacruz/.sdkman/bin/sdkman-init.sh"
-[[ -s "/Users/wuilliam.lacruz/.gvm/scripts/gvm" ]] && source "/Users/wuilliam.lacruz/.gvm/scripts/gvm"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -133,8 +134,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export GITHUB_LOGIN="wlacruzpy"
 export GITHUB_TOKEN="$(cat ~/.github_token)"
-
-# export CONN_STR="postgres://test:test@localhost:21432/test_test?sslmode=disable"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -150,3 +149,13 @@ nn() {
   file=$(fd --type f --hidden --follow --exclude .git > /dev/null | fzf +m) &&
   nvim "$file"
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/wuilliam.lacruz/.sdkman"
+[[ -s "/Users/wuilliam.lacruz/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/wuilliam.lacruz/.sdkman/bin/sdkman-init.sh"
+[[ -s "/Users/wuilliam.lacruz/.gvm/scripts/gvm" ]] && source "/Users/wuilliam.lacruz/.gvm/scripts/gvm"
+

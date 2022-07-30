@@ -1,8 +1,8 @@
-local cmp = require'cmp'
-local tabnine = require'cmp_tabnine.config'
-local compare = require'cmp.config.compare'
-local lspkind = require'lspkind'
-local luasnip = require'luasnip'
+local cmp = require('cmp')
+local tabnine = require('cmp_tabnine.config')
+local compare = require('cmp.config.compare')
+local lspkind = require('lspkind')
+local luasnip = require('luasnip')
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -34,7 +34,7 @@ tabnine:setup({
 
 cmp.setup({
   -- required even for tabnine
-  snippet = {expand = function(args) require'luasnip'.lsp_expand(args.body) end},
+  snippet = {expand = function(args) require('luasnip').lsp_expand(args.body) end},
   mapping = {
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -70,7 +70,7 @@ cmp.setup({
   sorting = {
     priority_weight = 2,
     comparators = {
-      require'cmp_tabnine.compare',
+      require('cmp_tabnine.compare'),
       compare.offset,
       compare.exact,
       compare.score,

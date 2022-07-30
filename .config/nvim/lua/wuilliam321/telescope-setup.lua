@@ -1,6 +1,6 @@
-local actions = require'telescope.actions'
+local actions = require('telescope.actions')
 
-require'telescope'.setup{
+require('telescope').setup({
   defaults = {
     vimgrep_arguments = {
       'rg',
@@ -23,9 +23,9 @@ require'telescope'.setup{
     },
     -- file_ignore_patterns = { "vendor/.*", "swagger/.*" , "build/.*" },
 
-    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+    file_previewer = require('telescope.previewers').vim_buffer_cat.new,
+    grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
+    qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
 
     mappings = {i = {['<C-q>'] = actions.send_to_qflist}},
   },
@@ -46,11 +46,11 @@ require'telescope'.setup{
         },
       },
     },
-    ['ui-select'] = {require'wuilliam321.custom-themes'.no_preview},
+    ['ui-select'] = {require('wuilliam321.custom-themes').no_preview},
   },
-}
+})
 
-require'telescope'.load_extension('refactoring')
-require'telescope'.load_extension('fzf')
-require'telescope'.load_extension('file_browser')
+require('telescope').load_extension('refactoring')
+require('telescope').load_extension('fzf')
+require('telescope').load_extension('file_browser')
 require('telescope').load_extension('ui-select')

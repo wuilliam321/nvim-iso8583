@@ -1,4 +1,4 @@
-local lspconfig = require'lspconfig'
+local lspconfig = require('lspconfig')
 
 local language_servers = {
   'html',
@@ -67,12 +67,21 @@ local language_servers = {
       '/Users/wuilliam.lacruz/Downloads/lua-language-server/' .. 'main.lua',
     },
     settings = {
-      Lua = {diagnostics = {globals = {'vim'}}},
-      format = {
-        enable = true,
-        defaultConfig = {indent_style = 'space', indent_size = '2'},
+      Lua = {
+        runtime = {
+          version = 'LuaJIT',
+          path = vim.split(package.path, ';'),
+        },
+        diagnostics = {
+          globals = {'vim'},
+        },
+        workspace = {
+          library = {
+            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+          },
+        },
       },
-      diagnostics = {neededFileStatus = {['codestyle-check'] = 'Any'}},
     },
   },
 }
@@ -89,7 +98,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] =
 
 local capabilities = (function()
   local c = vim.lsp.protocol.make_client_capabilities()
-  c = require'cmp_nvim_lsp'.update_capabilities(c)
+  c = require('cmp_nvim_lsp').update_capabilities(c)
   c.textDocument.completion.completionItem.snippetSupport = true
   c.textDocument.completion.completionItem.resolveSupport = {
     properties = {'documentation', 'detail', 'additionalTextEdits'},
@@ -98,7 +107,7 @@ local capabilities = (function()
 end)()
 
 local on_attach = function(client)
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.cmd[[
       augroup lsp_document_highlight
         autocmd! * <buffer>
@@ -108,7 +117,7 @@ local on_attach = function(client)
     ]]
   end
 
-  if client.resolved_capabilities.code_lens then
+  if client.server_capabilities.code_lens then
     vim.cmd[[
       augroup lsp_document_codelens
         au! * <buffer>
