@@ -11,6 +11,18 @@ local language_servers = {
   'dockerls',
   'yamlls',
   'terraformls',
+  sqls = {
+      settings = {
+          sqls = {
+              connections = {
+                  {
+                      driver = 'postgresql',
+                      dataSourceName = 'host=localhost port=25435 user=test password=test dbname=test sslmode=disable',
+                  },
+              },
+          },
+      },
+  },
   kotlin_language_server = {
     settings = {kotlin = {compiler = {jvm = {target = '1.8'}}}},
     cmd = {

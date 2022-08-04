@@ -13,7 +13,7 @@ nnoremap <leader>ga <cmd>lua require("wuilliam321.finders").actions_golang()<cr>
 function! s:GoAutocmds()
   augroup GOAutocmds
       autocmd!
-      autocmd BufWritePre *.go :lua vim.lsp.buf.formatting()
+      autocmd BufWritePre *.go :lua vim.lsp.buf.format { async = true }
   augroup END
 endfunction
 
