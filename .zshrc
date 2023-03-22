@@ -1,21 +1,17 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export EDITOR="nvim"
-export ZSH="/Users/wuilliam.lacruz/.oh-my-zsh"
+export ZSH="/Users/wlacruz/.oh-my-zsh"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export GOBIN="$GOPATH/bin"
-export PATH="$HOME/w/j:$PATH"
-export GOPRIVATE="github.com/deliveryhero/*"
-export GONOSUMDB="github.com/deliveryhero/*,github.com/pedidosya/*"
 
 export PATH="/usr/local/opt/lua@5.3/bin:$PATH"
 export PATH="$HOME/Downloads/jdt-language-server-latest/runtime:$PATH"
-export PATH="$HOME/Downloads/istio-1.13.2/bin:$PATH"
 
-export JDTLS_HOME=/Users/wuilliam.lacruz/Downloads/jdt-language-server-latest
+export JDTLS_HOME=/Users/wlacruz/Downloads/jdt-language-server-latest
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -80,7 +76,10 @@ ZSH_THEME="wezm"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git npm yarn node aws cp docker kubectl zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git npm yarn node cp docker)
+
+#plugins=(git npm yarn node aws cp docker kubectl zsh-autosuggestions zsh-syntax-highlighting)
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,17 +109,10 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias t="tmux"
-alias tunnel="/Users/wuilliam.lacruz/w/product-it-documentation/infrastructure/ssh-tunneling/stg-tunnel.sh"
-# alias swag="docker run --rm -it  --user $(id -u):$(id -g) -p 34000:34000 -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
-alias ctags="`brew --prefix`/bin/ctags"
+#alias ctags="`brew --prefix`/bin/ctags"
 alias td="nvim ~/dotfiles/notes.md"
 alias dot="cd ~/dotfiles; nvim"
-alias saml-stg="saml2aws login -a vp-stg && export AWS_PROFILE=vp-stg"
-alias saml-prd="saml2aws login -a vp-prd && export AWS_PROFILE=vp-prd"
-alias saml-op="saml2aws login -a vp-op && export AWS_PROFILE=vp-op"
-alias eks-eu01-stg="aws eks --region eu-west-1 update-kubeconfig --name eu01-stg --profile vp-stg"
-alias eks-eu01-prd="aws eks --region eu-west-1 update-kubeconfig --name eu01-prd --profile vp-prd"
-alias helm-update="cd ~/go/src/github.com/deliveryhero/dh-vt-kratos; helm package ./infrastructure/charts/apps/vendor-onboarding/. -d ./infrastructure/charts/apps/vendor-onboarding"
+
 alias vim="/usr/local/bin/nvim"
 
 eval "$(zoxide init zsh)"
@@ -132,7 +124,7 @@ compinit
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-export GITHUB_LOGIN="wlacruzpy"
+export GITHUB_LOGIN="wuilliam321"
 export GITHUB_TOKEN="$(cat ~/.github_token)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -155,7 +147,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/wuilliam.lacruz/.sdkman"
-[[ -s "/Users/wuilliam.lacruz/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/wuilliam.lacruz/.sdkman/bin/sdkman-init.sh"
-[[ -s "/Users/wuilliam.lacruz/.gvm/scripts/gvm" ]] && source "/Users/wuilliam.lacruz/.gvm/scripts/gvm"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH=/Users/wlacruz/.sdkman/candidates/grails/current/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin
+#Added by furycli:
+export PATH=/Users/wlacruz/Library/Python//bin:/Users/wlacruz/.sdkman/candidates/grails/current/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin
+export PATH=/Users/wlacruz/Library/Python//bin:/Users/wlacruz/.sdkman/candidates/grails/current/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:/usr/local/go/bin
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export ES_JAVA_HOME=
+export JAVA_HOME=

@@ -71,13 +71,7 @@ local language_servers = {
     },
   },
   tsserver = {root_dir = lspconfig.util.root_pattern('tsconfig.json', '.git')},
-  sumneko_lua = {
-    cmd = {
-      '/Users/wuilliam.lacruz/Downloads/lua-language-server/' ..
-        'bin/lua-language-server',
-      '-E',
-      '/Users/wuilliam.lacruz/Downloads/lua-language-server/' .. 'main.lua',
-    },
+  lua_ls = {
     settings = {
       Lua = {
         runtime = {
@@ -85,13 +79,15 @@ local language_servers = {
           path = vim.split(package.path, ';'),
         },
         diagnostics = {
-          globals = {'vim'},
+          globals = { 'vim' },
         },
         workspace = {
-          library = {
-            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-          },
+          -- Make the server aware of Neovim runtime files
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = {
+          enable = false,
         },
       },
     },
@@ -110,7 +106,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] =
 
 local capabilities = (function()
   local c = vim.lsp.protocol.make_client_capabilities()
-  c = require('cmp_nvim_lsp').update_capabilities(c)
+  c = require('cmp_nvim_lsp').default_capabilities(c)
   c.textDocument.completion.completionItem.snippetSupport = true
   c.textDocument.completion.completionItem.resolveSupport = {
     properties = {'documentation', 'detail', 'additionalTextEdits'},

@@ -93,7 +93,7 @@ nnoremap( '<C-l>', ':cnext<cr>zt' )
 -- Git
 nnoremap( '<leader>gs', ':G<cr>' )
 nnoremap( '<leader>u', ':UndotreeToggle<cr>' )
-nnoremap( '<leader>m', ':MaximizerToggle<cr>' )
+-- nnoremap( '<leader>m', ':MaximizerToggle<cr>' )
 
 -- remap to prevent leader h to be messed
 nnoremap( '<Space>ghp', '@<Plug>(GitGutterPreviewHunk)' )

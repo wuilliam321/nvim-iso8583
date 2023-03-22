@@ -37,8 +37,8 @@ treesitter.setup({
     lsp_interop = {
       enable = enable,
       peek_definition_code = {
-        ['dF'] = '@function.outer',
-        ['cF'] = '@class.outer',
+        ['<leader>dF'] = '@function.outer',
+        ['<leader>cF'] = '@class.outer',
       },
     },
     move = {
