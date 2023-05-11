@@ -1,17 +1,16 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+source ~/.bash_profile
+
 
 # Path to your oh-my-zsh installation.
 export EDITOR="nvim"
 export ZSH="/Users/wlacruz/.oh-my-zsh"
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
-export GOBIN="$GOPATH/bin"
 
-export PATH="/usr/local/opt/lua@5.3/bin:$PATH"
-export PATH="$HOME/Downloads/jdt-language-server-latest/runtime:$PATH"
+# export PATH="/usr/local/opt/lua@5.3/bin:$PATH"
+# export PATH="$HOME/Downloads/jdt-language-server-latest/runtime:$PATH"
 
-export JDTLS_HOME=/Users/wlacruz/Downloads/jdt-language-server-latest
+# export JDTLS_HOME=/Users/wlacruz/Downloads/jdt-language-server-latest
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -114,6 +113,7 @@ alias td="nvim ~/dotfiles/notes.md"
 alias dot="cd ~/dotfiles; nvim"
 
 alias vim="/usr/local/bin/nvim"
+alias ff="fury"
 
 eval "$(zoxide init zsh)"
 
@@ -157,3 +157,16 @@ export PATH=/Users/wlacruz/Library/Python//bin:/Users/wlacruz/.sdkman/candidates
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 export ES_JAVA_HOME=
 export JAVA_HOME=
+# Added by furycli:
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+export GOBIN="$GOPATH/bin"
+export PATH="$HOME/.yarn/bin:$PATH"
+
+export GOPRIVATE="github.com/mercadolibre/*"
+export GONOSUMDB="github.com/mercadolibre/*"
+

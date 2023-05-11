@@ -11,18 +11,19 @@ local language_servers = {
   'dockerls',
   'yamlls',
   'terraformls',
-  sqls = {
-      settings = {
-          sqls = {
-              connections = {
-                  {
-                      driver = 'postgresql',
-                      dataSourceName = 'host=localhost port=25435 user=test password=test dbname=test sslmode=disable',
-                  },
-              },
-          },
-      },
-  },
+  'sqlls',
+  -- sqlls = {
+  --     settings = {
+  --         sqlls = {
+  --             connections = {
+  --                 {
+  --                     driver = 'postgresql',
+  --                     dataSourceName = 'host=localhost port=25435 user=test password=test dbname=test sslmode=disable',
+  --                 },
+  --             },
+  --         },
+  --     },
+  -- },
   kotlin_language_server = {
     settings = {kotlin = {compiler = {jvm = {target = '1.8'}}}},
     cmd = {
@@ -41,34 +42,30 @@ local language_servers = {
     },
   },
   golangci_lint_ls = {
-    init_options = {
-      command = {
-        'golangci-lint',
-        'run',
-        '-E',
-        'deadcode',
-        '-E',
-        'errcheck',
-        '-E',
-        'gosimple',
-        '-E',
-        'govet',
-        '-E',
-        'ineffassign',
-        '-E',
-        'staticcheck',
-        '-E',
-        'structcheck',
-        '-E',
-        'typecheck',
-        '-E',
-        'unused',
-        '-E',
-        'varcheck',
-        '--out-format',
-        'json',
-      },
-    },
+    --init_options = {
+    --  command = {
+    --      -- "golangci-lint", "run", "--out-format", "json", "-c", ".code_quality/.golangci.yaml"
+    --      --
+    --    -- 'golangci-lint',
+    --    -- 'run',
+    --    -- '-E',
+    --    -- 'errcheck',
+    --    -- '-E',
+    --    -- 'gosimple',
+    --    -- '-E',
+    --    -- 'govet',
+    --    -- '-E',
+    --    -- 'ineffassign',
+    --    -- '-E',
+    --    -- 'staticcheck',
+    --    -- '-E',
+    --    -- 'typecheck',
+    --    -- '-E',
+    --    -- 'unused',
+    --    -- '--out-format',
+    --    -- 'json',
+    --  },
+    --},
   },
   tsserver = {root_dir = lspconfig.util.root_pattern('tsconfig.json', '.git')},
   lua_ls = {

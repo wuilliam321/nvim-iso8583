@@ -5,7 +5,7 @@ setlocal autowrite
 
 nnoremap <leader>pd :GoImport<CR>
 
-nnoremap <leader>mt <cmd>lua require("harpoon.term").gotoTerminal(1)<CR><cmd>norm I<CR><cmd>lua require("harpoon.term").sendCommand(1, 1)<CR><cmd>lua require("harpoon.term").gotoTerminal(1)<cr>G
+nnoremap <leader>mt <cmd>lua require("harpoon.term").gotoTerminal(1)<CR><cmd>norm I<CR><cmd>lua require("harpoon.term").sendCommand(1, 1)<CR><cmd>lua require("harpoon.term").gotoTerminal(1)<cr><Esc>
 nnoremap <leader>mi <cmd>lua require("harpoon.term").sendCommand(1, 3)<CR><cmd>lua require("harpoon.term").gotoTerminal(1)<cr>G
 nnoremap <leader>mw <cmd>lua require("harpoon.term").sendCommand(2, 2)<CR><cmd>lua require("harpoon.term").gotoTerminal(2)<cr>G
 nnoremap <leader>ga <cmd>lua require("wuilliam321.finders").actions_golang()<cr>
