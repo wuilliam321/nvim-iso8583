@@ -1,20 +1,38 @@
-require('wuilliam321.globals')
-require("wuilliam321.plugins")
 require("wuilliam321.settings")
-require("wuilliam321.colorscheme")
-require('wuilliam321.telescope-setup')
-require('wuilliam321.treesitter-setup')
-require('wuilliam321.treesitter-context')
-require('wuilliam321.finders')
+require("wuilliam321.packer")
 require("wuilliam321.mappings")
-require('wuilliam321.harpoon-setup')
-require('wuilliam321.lsp-setup')
-require('wuilliam321.lualine-setup')
-require('wuilliam321.icons')
-require('wuilliam321.cmp-setup')
-require('wuilliam321.comments')
-require('wuilliam321.ray-x-go')
-require('wuilliam321.luasnip-setup')
-require('wuilliam321.snippets')
-require('wuilliam321.custom-themes')
-require('wuilliam321.refactoring')
+require("wuilliam321.finders")
+
+P = function(v)
+    print(vim.inspect(v))
+    return v
+end
+
+RELOAD = function(...) return require('plenary.reload').reload_module(...) end
+
+R = function(name)
+    RELOAD(name)
+    return require(name)
+end
+
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+
+local wuilliam_group = augroup('Wuilliam321', {})
+autocmd({ "BufWritePre" }, {
+    group = wuilliam_group,
+    pattern = "*",
+    command = [[%s/\s\+$//e]],
+})
+
+local yank_group = augroup('HighlightYank', {})
+autocmd('TextYankPost', {
+    group = yank_group,
+    pattern = '*',
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = 'IncSearch',
+            timeout = 40,
+        })
+    end,
+})
