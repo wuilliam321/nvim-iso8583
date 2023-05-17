@@ -538,7 +538,7 @@ return require("packer").startup(function(use)
             vim.api.nvim_set_keymap("v", "<leader>rr", [[ <Esc><Cmd>lua require('refactoring').select_refactor()<CR>]],
                 opts)
 
-            -- vim.keymap.set('v', '<leader>rr', function() require('refactoring').select_refactor() end, m_opts)
+            vim.keymap.set("v", "<leader>rr", "<Esc><cmd>lua require('refactoring').select_refactor()<cr>", opts)
 
             -- local telescope = require('telescope')
             -- vim.keymap.set('v', '<leader>rr', telescope.extensions.refactoring.refactors, mapping_opts)
