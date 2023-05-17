@@ -10,3 +10,4 @@
 .config/gtk-2.0/
 .DS_Store
 .zshrc
+.config/nvim/plugin/packer_compiled.lua

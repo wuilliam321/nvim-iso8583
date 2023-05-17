@@ -53,24 +53,28 @@ return require("packer").startup(function(use)
 
             lsp.on_attach(function(client, bufnr)
                 -- lsp.default_keymaps({ buffer = bufnr })
+                if client.server_capabilities.hoverProvider then
+                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = bufnr })
+                end
+
                 if client.server_capabilities.documentHighlightProvider then
                     vim.cmd [[
-                    augroup lsp_document_highlight
-                        autocmd! * <buffer>
-                        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-                    augroup END
-                ]]
+                        augroup lsp_document_highlight
+                            autocmd! * <buffer>
+                            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+                        augroup END
+                    ]]
                 end
 
                 if client.server_capabilities.codeLensProvider then
                     vim.cmd [[
-                    augroup lsp_document_codelens
-                        au! * <buffer>
-                        autocmd BufEnter ++once         <buffer> lua require"vim.lsp.codelens".refresh()
-                        autocmd BufWritePost,CursorHold <buffer> lua require"vim.lsp.codelens".refresh()
-                    augroup END
-                ]]
+                        augroup lsp_document_codelens
+                            au! * <buffer>
+                            autocmd BufEnter ++once         <buffer> lua require"vim.lsp.codelens".refresh()
+                            autocmd BufWritePost,CursorHold <buffer> lua require"vim.lsp.codelens".refresh()
+                        augroup END
+                    ]]
                 end
 
                 vim.keymap.set('n', '<leader>fd', vim.lsp.buf.format, m_opts)
@@ -511,10 +515,16 @@ return require("packer").startup(function(use)
         },
         config = function()
             local refactoring = require('refactoring')
-            refactoring.setup({})
+            refactoring.setup({
+                -- prompt for return type
+                prompt_func_return_type = { go = true, ts = true, },
+                -- prompt for function parameters
+                prompt_func_param_type = { go = true, ts = true, },
+            })
 
             -- Remaps for the refactoring operations currently offered by the plugin
             local opts = { noremap = true, silent = true, expr = false }
+            -- Remaps for the refactoring operations currently offered by the plugin
             vim.api.nvim_set_keymap("v", "<leader>re",
                 [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], opts)
             vim.api.nvim_set_keymap("v", "<leader>rf",
@@ -528,17 +538,13 @@ return require("packer").startup(function(use)
             vim.api.nvim_set_keymap("n", "<leader>rb", [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]],
                 opts)
             vim.api.nvim_set_keymap("n", "<leader>rbf",
-                [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]], opts)
+                [[ :lua require('refactoring').refactor('Extract Block To File')<CR>]], opts)
 
             -- Inline variable can also pick up the identifier currently under the cursor without visual mode
             vim.api.nvim_set_keymap("n", "<leader>ri",
-                [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], opts)
-            vim.api.nvim_set_keymap("v", "<leader>re",
-                [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], opts)
-            vim.api.nvim_set_keymap("v", "<leader>rr", [[ <Esc><Cmd>lua require('refactoring').select_refactor()<CR>]],
-                opts)
+                [[ :lua require('refactoring').refactor('Inline Variable')<CR>]], opts)
 
-            vim.keymap.set("v", "<leader>rr", "<Esc><cmd>lua require('refactoring').select_refactor()<cr>", opts)
+            vim.api.nvim_set_keymap("v", "<leader>rr", ":lua require('refactoring').select_refactor()<CR>", opts)
 
             -- local telescope = require('telescope')
             -- vim.keymap.set('v', '<leader>rr', telescope.extensions.refactoring.refactors, mapping_opts)
