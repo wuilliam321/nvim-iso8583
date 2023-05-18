@@ -52,29 +52,50 @@ return require("packer").startup(function(use)
             local lsp = require('lsp-zero').preset({})
 
             lsp.on_attach(function(client, bufnr)
-                -- lsp.default_keymaps({ buffer = bufnr })
                 if client.server_capabilities.hoverProvider then
                     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = bufnr })
                 end
 
+
                 if client.server_capabilities.documentHighlightProvider then
-                    vim.cmd [[
-                        augroup lsp_document_highlight
-                            autocmd! * <buffer>
-                            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-                        augroup END
-                    ]]
+                    -- hi LspReferenceText cterm=bold gui=bold
+                    -- hi LspReferenceRead cterm=bold gui=bold
+                    -- hi LspReferenceWrite cterm=bold gui=bold
+                    local group = vim.api.nvim_create_augroup("LSPDocumentHighlight", {})
+
+                    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+                        buffer = bufnr,
+                        group = group,
+                        callback = function()
+                            vim.lsp.buf.document_highlight()
+                        end,
+                    })
+                    vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+                        buffer = bufnr,
+                        group = group,
+                        callback = function()
+                            vim.lsp.buf.clear_references()
+                        end,
+                    })
                 end
 
                 if client.server_capabilities.codeLensProvider then
-                    vim.cmd [[
-                        augroup lsp_document_codelens
-                            au! * <buffer>
-                            autocmd BufEnter ++once         <buffer> lua require"vim.lsp.codelens".refresh()
-                            autocmd BufWritePost,CursorHold <buffer> lua require"vim.lsp.codelens".refresh()
-                        augroup END
-                    ]]
+                    local group = vim.api.nvim_create_augroup("LSPDocumentCodelens", {})
+
+                    vim.api.nvim_create_autocmd({ "BufEnter ++once" }, {
+                        buffer = bufnr,
+                        group = group,
+                        callback = function()
+                            vim.lsp.codelens.refresh()
+                        end,
+                    })
+                    vim.api.nvim_create_autocmd({ "BufWritePost", "CursorHold" }, {
+                        buffer = bufnr,
+                        group = group,
+                        callback = function()
+                            vim.lsp.codelens.refresh()
+                        end,
+                    })
                 end
 
                 vim.keymap.set('n', '<leader>fd', vim.lsp.buf.format, m_opts)
