@@ -529,7 +529,7 @@ return require("packer").startup(function(use)
     }
 
     use {
-        'ThePrimeagen/refactoring.nvim',
+        '~/personal/refactoring.nvim',
         requires = {
             { 'nvim-lua/plenary.nvim' },
             { 'nvim-treesitter/nvim-treesitter' }
@@ -541,6 +541,11 @@ return require("packer").startup(function(use)
                 prompt_func_return_type = { go = true, ts = true, },
                 -- prompt for function parameters
                 prompt_func_param_type = { go = true, ts = true, },
+                formatting = {
+                    go = {
+                        cmd = ":lua vim.lsp.buf.format()",
+                    }
+                }
             })
 
             -- Remaps for the refactoring operations currently offered by the plugin
