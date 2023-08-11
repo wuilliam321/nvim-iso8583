@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 
 source ~/.bash_profile
+source /Users/wlacruz/.gvm/scripts/gvm
 
 
 # Path to your oh-my-zsh installation.

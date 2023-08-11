@@ -112,6 +112,7 @@ return require("packer").startup(function(use)
             lsp.ensure_installed({
                 'lua_ls',
                 'gopls',
+                'jsonls',
                 'golangci_lint_ls',
                 'tsserver',
                 'rust_analyzer',
@@ -461,6 +462,7 @@ return require("packer").startup(function(use)
                         ColorColumn = { bg = colors.surface0 },
                         CursorLine = { bg = colors.surface0 },
                         CursorColumn = { bg = colors.surface0 },
+                        Search = { bg = colors.sapphire, fg = colors.surface0 },
                     }
                 end,
                 integrations = {
@@ -471,6 +473,10 @@ return require("packer").startup(function(use)
                     harpoon = true,
                     telescope = true,
                     treesitter_context = true,
+                },
+                highlight = {
+                    enable = true,
+                    -- additional_vim_regex_highlighting = false
                 },
             })
 
@@ -530,6 +536,8 @@ return require("packer").startup(function(use)
 
     use {
         '~/personal/refactoring.nvim',
+        branch = 'feature/inline-func',
+        -- commit = '23eb4de40c410ad6c90930ee2a4aac911c05eb6f',
         requires = {
             { 'nvim-lua/plenary.nvim' },
             { 'nvim-treesitter/nvim-treesitter' }
@@ -570,7 +578,7 @@ return require("packer").startup(function(use)
             vim.api.nvim_set_keymap("n", "<leader>ri",
                 [[ :lua require('refactoring').refactor('Inline Variable')<CR>]], opts)
 
-            vim.api.nvim_set_keymap("v", "<leader>rr", ":lua require('refactoring').select_refactor()<CR>", opts)
+            vim.api.nvim_set_keymap("v", "<leader>rr", "<Esc><Cmd>lua require('refactoring').select_refactor()<CR>", opts)
 
             -- local telescope = require('telescope')
             -- vim.keymap.set('v', '<leader>rr', telescope.extensions.refactoring.refactors, mapping_opts)
@@ -620,7 +628,25 @@ return require("packer").startup(function(use)
     }
 
     use {
-        'github/copilot.vim'
+        'github/copilot.vim',
+        config = function()
+            vim.g.copilot_filetypes = { VimspectorPrompt = false }
+        end
+    }
+
+    use {
+        'tpope/vim-dadbod',
+        requires = {
+            { 'kristijanhusak/vim-dadbod-ui' },
+        },
+        config = function()
+            -- vim.cmd[[let g:dbs = {
+            --     \ 'dev': 'postgres://postgres:mypassword@localhost:5432/my-dev-db',
+            --     \ 'staging': 'postgres://postgres:mypassword@localhost:5432/my-staging-db',
+            --     \ 'wp': 'mysql://root@localhost/wp_awesome',
+            --     \ }
+            -- ]]
+        end
     }
 
     -- Automatically set up your configuration after cloning packer.nvim
