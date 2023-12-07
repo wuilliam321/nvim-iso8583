@@ -82,13 +82,13 @@ return require("packer").startup(function(use)
                 if client.server_capabilities.codeLensProvider then
                     local group = vim.api.nvim_create_augroup("LSPDocumentCodelens", {})
 
-                    vim.api.nvim_create_autocmd({ "BufEnter ++once" }, {
-                        buffer = bufnr,
-                        group = group,
-                        callback = function()
-                            vim.lsp.codelens.refresh()
-                        end,
-                    })
+                    -- vim.api.nvim_create_autocmd({ "BufEnter ++once" }, {
+                    --     buffer = bufnr,
+                    --     group = group,
+                    --     callback = function()
+                    --         vim.lsp.codelens.refresh()
+                    --     end,
+                    -- })
                     vim.api.nvim_create_autocmd({ "BufWritePost", "CursorHold" }, {
                         buffer = bufnr,
                         group = group,
@@ -102,11 +102,11 @@ return require("packer").startup(function(use)
                 vim.keymap.set('n', '<leader>pd', vim.lsp.buf.format, m_opts)
                 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, m_opts)
                 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, m_opts)
-                vim.keymap.set('n', '<C-h>', '<cmd>cprev<cr>zz', m_opts)
-                vim.keymap.set('n', '<C-l>', '<cmd>cnext<cr>zz', m_opts)
+                vim.keymap.set('n', '<C-h>', '<cmd>cprev<cr>zt', m_opts)
+                vim.keymap.set('n', '<C-l>', '<cmd>cnext<cr>zt', m_opts)
 
-                vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>zz', m_opts)
-                vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>zz', m_opts)
+                vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>zt', m_opts)
+                vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>zt', m_opts)
             end)
 
             lsp.ensure_installed({
@@ -513,6 +513,7 @@ return require("packer").startup(function(use)
     use { 'tpope/vim-surround' }
     use { 'tpope/vim-repeat' }
     use { 'tpope/vim-commentary' }
+    use { 'mechatroner/rainbow_csv' }
 
     use {
         'mbbill/undotree',
@@ -535,8 +536,9 @@ return require("packer").startup(function(use)
     }
 
     use {
-        '~/personal/refactoring.nvim',
-        branch = 'feature/inline-func',
+        'ThePrimeagen/refactoring.nvim',
+        -- '~/personal/refactoring.nvim',
+        -- branch = 'feature/inline-func',
         -- commit = '23eb4de40c410ad6c90930ee2a4aac911c05eb6f',
         requires = {
             { 'nvim-lua/plenary.nvim' },
