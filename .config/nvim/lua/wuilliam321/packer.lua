@@ -28,7 +28,7 @@ return require("packer").startup(function(use)
     use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
     use {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
+        branch = 'v3.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -49,99 +49,91 @@ return require("packer").startup(function(use)
             { 'onsails/lspkind.nvim' },
         },
         config = function()
-            local lsp = require('lsp-zero').preset({})
+            local lsp_zero = require('lsp-zero')
 
-            lsp.on_attach(function(client, bufnr)
-                if client.server_capabilities.hoverProvider then
-                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = bufnr })
-                end
-
-
-                if client.server_capabilities.documentHighlightProvider then
-                    -- hi LspReferenceText cterm=bold gui=bold
-                    -- hi LspReferenceRead cterm=bold gui=bold
-                    -- hi LspReferenceWrite cterm=bold gui=bold
-                    local group = vim.api.nvim_create_augroup("LSPDocumentHighlight", {})
-
-                    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-                        buffer = bufnr,
-                        group = group,
-                        callback = function()
-                            vim.lsp.buf.document_highlight()
-                        end,
-                    })
-                    vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-                        buffer = bufnr,
-                        group = group,
-                        callback = function()
-                            vim.lsp.buf.clear_references()
-                        end,
-                    })
-                end
-
-                if client.server_capabilities.codeLensProvider then
-                    local group = vim.api.nvim_create_augroup("LSPDocumentCodelens", {})
-
-                    -- vim.api.nvim_create_autocmd({ "BufEnter ++once" }, {
-                    --     buffer = bufnr,
-                    --     group = group,
-                    --     callback = function()
-                    --         vim.lsp.codelens.refresh()
-                    --     end,
-                    -- })
-                    vim.api.nvim_create_autocmd({ "BufWritePost", "CursorHold" }, {
-                        buffer = bufnr,
-                        group = group,
-                        callback = function()
-                            vim.lsp.codelens.refresh()
-                        end,
-                    })
-                end
+            lsp_zero.on_attach(function(_, bufnr)
+                lsp_zero.default_keymaps({ buffer = bufnr })
 
                 vim.keymap.set('n', '<leader>fd', vim.lsp.buf.format, m_opts)
                 vim.keymap.set('n', '<leader>pd', vim.lsp.buf.format, m_opts)
                 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, m_opts)
                 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, m_opts)
-                vim.keymap.set('n', '<C-h>', '<cmd>cprev<cr>zt', m_opts)
-                vim.keymap.set('n', '<C-l>', '<cmd>cnext<cr>zt', m_opts)
+                vim.keymap.set('n', '<C-h>', '<cmd>cprev<cr>zz', m_opts)
+                vim.keymap.set('n', '<C-l>', '<cmd>cnext<cr>zz', m_opts)
 
-                vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>zt', m_opts)
-                vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>zt', m_opts)
+                vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>zz', m_opts)
+                vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>zz', m_opts)
             end)
 
-            lsp.ensure_installed({
-                'lua_ls',
-                'gopls',
-                'jsonls',
-                'golangci_lint_ls',
-                'tsserver',
-                'rust_analyzer',
-            })
+            -- lsp_zero.set_server_config({
+            --     on_init = function(client)
+            --         -- if client.server_capabilities.documentHighlightProvider then
+            --         --     -- hi LspReferenceText cterm=bold gui=bold
+            --         --     -- hi LspReferenceRead cterm=bold gui=bold
+            --         --     -- hi LspReferenceWrite cterm=bold gui=bold
+            --         --     local group = vim.api.nvim_create_augroup("LSPDocumentHighlight", {})
 
-            lsp.use('lua_ls', {
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { 'vim' }
-                        }
-                    }
-                }
-            })
+            --         --     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+            --         --         buffer = bufnr,
+            --         --         group = group,
+            --         --         callback = function()
+            --         --             vim.lsp.buf.document_highlight()
+            --         --         end,
+            --         --     })
+            --         --     vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+            --         --         buffer = bufnr,
+            --         --         group = group,
+            --         --         callback = function()
+            --         --             vim.lsp.buf.clear_references()
+            --         --         end,
+            --         --     })
+            --         -- end
 
-            lsp.use('gopls', {
-                settings = {
-                    gopls = {
-                        codelenses = { gc_details = false },
-                        usePlaceholders = true,
-                        buildFlags = { '-tags=integration' },
-                    },
+            --         -- if client.server_capabilities.codeLensProvider then
+            --         --     local group = vim.api.nvim_create_augroup("LSPDocumentCodelens", {})
+
+            --         --     -- vim.api.nvim_create_autocmd({ "BufEnter ++once" }, {
+            --         --     --     buffer = bufnr,
+            --         --     --     group = group,
+            --         --     --     callback = function()
+            --         --     --         vim.lsp.codelens.refresh()
+            --         --     --     end,
+            --         --     -- })
+            --         --     vim.api.nvim_create_autocmd({ "BufWritePost", "CursorHold" }, {
+            --         --         buffer = bufnr,
+            --         --         group = group,
+            --         --         callback = function()
+            --         --             vim.lsp.codelens.refresh()
+            --         --         end,
+            --         --     })
+            --         -- end
+            --     end,
+            -- })
+
+            require('mason').setup({})
+            require('mason-lspconfig').setup({
+                -- Replace the language servers listed here
+                -- with the ones you want to install
+                ensure_installed = { 'lua_ls', 'gopls', 'jsonls', 'golangci_lint_ls', 'tsserver', 'rust_analyzer', },
+                handlers = {
+                    lsp_zero.default_setup,
+                    lua_ls = function()
+                        local lua_opts = lsp_zero.nvim_lua_ls()
+                        require('lspconfig').lua_ls.setup(lua_opts)
+                    end,
+                    gopls = function()
+                        require('lspconfig').gopls.setup({
+                            codelenses = { gc_details = false },
+                            usePlaceholders = true,
+                            buildFlags = { '-tags=integration' },
+                        })
+                    end,
                 },
             })
 
-            lsp.setup()
 
             local cmp = require('cmp')
-            local cmp_action = require('lsp-zero').cmp_action()
+            -- local cmp_action = require('lsp-zero').cmp_action()
 
             cmp.setup({
                 snippet = { expand = function(args) require('luasnip').lsp_expand(args.body) end },
@@ -153,8 +145,8 @@ return require("packer").startup(function(use)
                     { name = 'cmp_tabnine' },
                 },
                 mapping = {
-                    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-                    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+                    -- ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+                    -- ['<C-b>'] = cmp_action.luasnip_jump_backward(),
                     ['<C-Space>'] = cmp.mapping.complete(),
                     ['<C-e>'] = cmp.mapping.abort(),
                     ['<CR>'] = cmp.mapping.confirm({ select = true }),
