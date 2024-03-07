@@ -666,6 +666,11 @@ return require("packer").startup(function(use)
         end
     }
 
+    use { 'j-hui/fidget.nvim',
+        config = function()
+            require('fidget').setup({})
+        end
+    }
 
     use {
         'hoob3rt/lualine.nvim',
