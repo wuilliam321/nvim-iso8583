@@ -22,6 +22,19 @@ vim.cmd([[
 local m_opts = { noremap = true, silent = true, nowait = true }
 
 return require("packer").startup(function(use)
+    use {
+        '/Users/wlacruz/personal/nvim-autorun',
+        config = function()
+        end
+    }
+    use {
+        '/Users/wlacruz/personal/nvim-iso8583',
+        config = function()
+            require('iso8583').setup({
+                cmd = "/Users/wlacruz/work/parser/bin/iso8583",
+            })
+        end
+    }
     use('wbthomason/packer.nvim')
 
     -- lsp
