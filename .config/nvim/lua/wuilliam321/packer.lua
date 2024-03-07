@@ -65,17 +65,37 @@ return require("packer").startup(function(use)
             local lsp_zero = require('lsp-zero')
 
             lsp_zero.on_attach(function(_, bufnr)
-                lsp_zero.default_keymaps({ buffer = bufnr })
+                -- lsp_zero.default_keymaps({ buffer = bufnr })
+                lsp_zero.buffer_autoformat()
 
                 vim.keymap.set('n', '<leader>fd', vim.lsp.buf.format, m_opts)
                 vim.keymap.set('n', '<leader>pd', vim.lsp.buf.format, m_opts)
                 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, m_opts)
                 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, m_opts)
+                vim.keymap.set('v', '<leader>ca', vim.lsp.buf.code_action, m_opts)
                 vim.keymap.set('n', '<C-h>', '<cmd>cprev<cr>zz', m_opts)
                 vim.keymap.set('n', '<C-l>', '<cmd>cnext<cr>zz', m_opts)
 
                 vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>zz', m_opts)
                 vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>zz', m_opts)
+
+                vim.lsp.inlay_hint.enable(0, true)
+
+                local w = math.floor(vim.api.nvim_win_get_width(0) / 3)
+                require('autorun').setup({
+                    show_returns = true,
+                    go_tests = true,
+                    window = {
+                        relative = 'editor',
+                        height = vim.api.nvim_win_get_height(0) - 2,
+                        width = w,
+                        top = 0,
+                        left = w * 2,
+                        style = 'minimal',
+                        border = 'double',
+                        transparent = 10,
+                    }
+                })
             end)
 
             -- lsp_zero.set_server_config({
@@ -164,10 +184,14 @@ return require("packer").startup(function(use)
 
 
             local cmp = require('cmp')
-            -- local cmp_action = require('lsp-zero').cmp_action()
+            local cmp_action = require('lsp-zero').cmp_action()
 
             cmp.setup({
-                snippet = { expand = function(args) require('luasnip').lsp_expand(args.body) end },
+                snippet = {
+                    expand = function(args)
+                        require('luasnip').lsp_expand(args.body)
+                    end,
+                },
                 sources = {
                     { name = 'path' },
                     { name = 'nvim_lsp' },
@@ -176,11 +200,26 @@ return require("packer").startup(function(use)
                     { name = 'cmp_tabnine' },
                 },
                 mapping = {
-                    -- ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-                    -- ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+                    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+                    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
                     ['<C-Space>'] = cmp.mapping.complete(),
                     ['<C-e>'] = cmp.mapping.abort(),
                     ['<CR>'] = cmp.mapping.confirm({ select = true }),
+
+                    ['<C-p>'] = cmp.mapping(function()
+                        if cmp.visible() then
+                            cmp.select_prev_item({ behavior = 'insert' })
+                        else
+                            cmp.complete()
+                        end
+                    end),
+                    ['<C-n>'] = cmp.mapping(function()
+                        if cmp.visible() then
+                            cmp.select_next_item({ behavior = 'insert' })
+                        else
+                            cmp.complete()
+                        end
+                    end),
                 },
                 formatting = {
                     -- onsails/lspkind-nvim
@@ -496,10 +535,27 @@ return require("packer").startup(function(use)
                     harpoon = true,
                     telescope = true,
                     treesitter_context = true,
+                    native_lsp = {
+                        enabled = true,
+                        virtual_text = {
+                            errors = { "italic" },
+                            hints = { "italic" },
+                            warnings = { "italic" },
+                            information = { "italic" },
+                        },
+                        underlines = {
+                            errors = { "underline" },
+                            hints = { "underline" },
+                            warnings = { "underline" },
+                            information = { "underline" },
+                        },
+                        inlay_hints = {
+                            background = false,
+                        },
+                    },
                 },
-                highlight = {
-                    enable = true,
-                    -- additional_vim_regex_highlighting = false
+                inlay_hints = {
+                    background = true,
                 },
             })
 
