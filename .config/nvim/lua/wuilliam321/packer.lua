@@ -134,11 +134,29 @@ return require("packer").startup(function(use)
                         local lua_opts = lsp_zero.nvim_lua_ls()
                         require('lspconfig').lua_ls.setup(lua_opts)
                     end,
+                    golangci_lint_ls = function()
+                        require('lspconfig').gopls.setup({
+                            cmd = { "/Users/wlacruz/.gvm/pkgsets/go1.22.1/global/bin/golangci-lint" },
+                        })
+                    end,
                     gopls = function()
                         require('lspconfig').gopls.setup({
-                            codelenses = { gc_details = false },
-                            usePlaceholders = true,
-                            buildFlags = { '-tags=integration' },
+                            cmd = { "/Users/wlacruz/.gvm/pkgsets/go1.22.1/global/bin/gopls" },
+                            settings = {
+                                gopls = {
+                                    codelenses = { gc_details = false },
+                                    usePlaceholders = true,
+                                    buildFlags = { '-tags=integration' },
+                                    hints = {
+                                        -- assignVariableTypes = true,
+                                        compositeLiteralFields = true,
+                                        constantValues = true,
+                                        -- functionTypeParameters = true, -- generics not needed for now
+                                        parameterNames = true,
+                                        rangeVariableTypes = true
+                                    }
+                                },
+                            },
                         })
                     end,
                 },
