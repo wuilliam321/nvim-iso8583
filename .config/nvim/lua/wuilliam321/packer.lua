@@ -22,8 +22,7 @@ vim.cmd([[
 local m_opts = { noremap = true, silent = true, nowait = true }
 
 return require("packer").startup(function(use)
-    use {
-        '/Users/wlacruz/personal/nvim-autorun',
+    use { '/Users/wlacruz/personal/nvim-autorun',
         config = function()
         end
     }
@@ -80,22 +79,23 @@ return require("packer").startup(function(use)
                 vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>zz', m_opts)
 
                 vim.lsp.inlay_hint.enable(0, true)
-
-                local w = math.floor(vim.api.nvim_win_get_width(0) / 3)
-                require('autorun').setup({
-                    show_returns = true,
-                    go_tests = true,
-                    window = {
-                        relative = 'editor',
-                        height = vim.api.nvim_win_get_height(0) - 2,
-                        width = w,
-                        top = 0,
-                        left = w * 2,
-                        style = 'minimal',
-                        border = 'double',
-                        transparent = 10,
-                    }
-                })
+                vim.defer_fn(function()
+                    local w = math.floor(vim.api.nvim_win_get_width(0) / 3)
+                    require('autorun').setup({
+                        show_returns = true,
+                        go_tests = true,
+                        window = {
+                            relative = 'editor',
+                            height = vim.api.nvim_win_get_height(0) - 2,
+                            width = w + 12,
+                            top = 0,
+                            left = (w + 12) * 2,
+                            style = 'minimal',
+                            border = 'double',
+                            transparent = 10,
+                        }
+                    })
+                end, 2000)
             end)
 
             -- lsp_zero.set_server_config({
@@ -164,17 +164,17 @@ return require("packer").startup(function(use)
                             cmd = { "/Users/wlacruz/.gvm/pkgsets/go1.22.1/global/bin/gopls" },
                             settings = {
                                 gopls = {
-                                    codelenses = { gc_details = false },
+                                    -- codelenses = { gc_details = false },
                                     usePlaceholders = true,
                                     buildFlags = { '-tags=integration' },
-                                    hints = {
-                                        -- assignVariableTypes = true,
-                                        compositeLiteralFields = true,
-                                        constantValues = true,
-                                        -- functionTypeParameters = true, -- generics not needed for now
-                                        parameterNames = true,
-                                        rangeVariableTypes = true
-                                    }
+                                    -- hints = {
+                                    --     -- assignVariableTypes = true,
+                                    --     compositeLiteralFields = true,
+                                    --     constantValues = true,
+                                    --     -- functionTypeParameters = true, -- generics not needed for now
+                                    --     parameterNames = true,
+                                    --     rangeVariableTypes = true
+                                    -- }
                                 },
                             },
                         })
@@ -553,9 +553,6 @@ return require("packer").startup(function(use)
                             background = false,
                         },
                     },
-                },
-                inlay_hints = {
-                    background = true,
                 },
             })
 

@@ -35,8 +35,16 @@ vim.opt.tags = 'tags'
 vim.opt.shortmess:append('c')
 
 vim.opt.list = true
-vim.opt.listchars:append({ tab = '▷-', extends = '»', precedes = '«', trail = '•' })
--- vim.opt.listchars:append({ nbsp = '␣', space = '␣', tab = '▷-', extends = '»', precedes = '«', trail = '•', eol = '↲' })
+-- vim.opt.listchars:append({ tab = '▷-', extends = '»', precedes = '«', trail = '•' })
+vim.opt.listchars:append({
+    nbsp = ' ',
+    space = ' ',
+    tab = '  ',
+    extends = '»',
+    precedes = '«',
+    trail = '•',
+    eol = ' '
+})
 vim.opt.joinspaces = false
 
 vim.g.netrw_browse_split = 0
